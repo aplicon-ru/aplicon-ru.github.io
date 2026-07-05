@@ -1,0 +1,65 @@
+---
+const title = "Апликон";
+---
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} — в разработке</title>
+  <meta name="description" content="Апликон — экосистема Универкон. Сайт в разработке." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main>
+    <div class="wordmark">Aplicon</div>
+    <p class="status">Сайт в разработке</p>
+  </main>
+</body>
+</html>
+
+<style>
+  :root {
+    --base: #1A2430;
+    --surface: #242F3D;
+    --accent: #E8A94D;
+    --text: #F5F6F7;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+  }
+
+  body {
+    background: var(--base);
+    color: var(--text);
+    font-family: 'PT Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  main {
+    text-align: center;
+  }
+
+  .wordmark {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .status {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--text);
+    opacity: 0.75;
+  }
+</style>
