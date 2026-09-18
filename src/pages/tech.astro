@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const rows = [
+  { title: "Учётные системы на 1С", lede: "Торговля, склад, кадры, образование: дорабатываем типовые конфигурации и пишем свои.", stack: "1С:Предприятие 8.5 · БСП · внешние компоненты", why: "Почему: 1С уже стоит у большинства компаний. Разумнее довести до ума то, что есть, чем заводить ещё одну систему." },
+  { title: "Связь между системами", lede: "Системы обмениваются данными по заранее описанным правилам, а не через выгрузки в Excel.", stack: "Go · Node.js · OpenRPC · REST · OAuth2 / OIDC · JWT (RS256, JWKS)", why: "Почему: договорённость описана заранее и проверяется машиной. Одну систему нельзя обновить так, чтобы незаметно сломать другую." },
+  { title: "Приложения для людей", lede: "Сотрудник или клиент работает с телефона, даже когда связь пропала.", stack: "TypeScript · React · PWA · RxDB · SSE · Web Push · Telegram Mini Apps", why: "Почему: на складе, в цеху и в аудитории связь плохая. Данные хранятся на устройстве и досинхронизируются, когда сеть вернётся." },
+  { title: "Установка и обновления", lede: "Ставится на ваши серверы и обновляется без ночных звонков админу.", stack: "Go · Docker · Harbor + GHCR · веб, TUI и CLI из одного файла · тихая установка MS SQL и PostgreSQL", why: "Почему: данные остаются у вас. Если обновление не удалось, система сама возвращается к прошлой версии." },
+  { title: "Резервные копии", lede: "Базы 1С копируются по расписанию и восстанавливаются, пользователей для этого не выгоняют.", stack: "Go · плагины: папка, SFTP, S3, Яндекс Диск · метрики в Zabbix / Prometheus", why: "Почему: делаем только полные копии. Цепочки разностных копий рвутся ровно тогда, когда копия нужна." },
+  { title: "Защищённый доступ", lede: "Сотрудник заходит в рабочие системы из дома по сертификату на токене, без VPN.", stack: "mTLS · ГОСТ · Рутокен · OIDC", why: "Почему: доступ привязан к кадровой системе. Уволили человека — доступ закрылся сам." },
+  { title: "Лицензии и защита контента", lede: "Коммерческие разработки продаются с лицензией и активацией, видео нельзя просто скачать.", stack: "JWS · Cloudflare Workers · HLS AES-128", why: "Почему: ключ проверяется на границе сети, а не в коде, который легко обойти." },
+  { title: "Знаем и подключаем", lede: "Государственные и отраслевые системы, с которыми работаем.", stack: "ФИС ФРДО · ФИС ГИА и приёма · Честный знак · ФФД 1.2", why: "Почему: одна запись не заводится дважды, поэтому расходиться нечему." },
+  { title: "Открытость", lede: "Модели предметных областей и часть инструментов публикуем открыто.", stack: "GitHub · edu-framework · CC BY-SA · AGPL-3.0", why: "Почему: своё понимание не прячем. Проверяйте, спорьте, используйте." },
+];
+---
+<Layout title="Технологии — Апликон">
+  <main>
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(36px,4vw,56px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">Технологии</h1>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:58ch;margin:0;text-wrap:pretty">Инструменты выбираем под задачу, а не под моду. Вот чем работаем сейчас.</p>
+    </section>
+    <section style="max-width:1060px;margin:0 auto;padding:clamp(30px,4vw,48px) 24px clamp(56px,7vw,88px)">
+      <div style="display:grid">
+        {rows.map((r, i) => (
+          <div style={`display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)${i === rows.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
+            <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">{r.title}</h2>
+            <div style="display:grid;gap:12px;min-width:0">
+              <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">{r.lede}</p>
+              <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">{r.stack}</p>
+              <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">{r.why}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+    <section style="border-top:1px solid rgba(245,246,247,.09);background:#242F3D">
+      <div style="max-width:1060px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px">
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(23px,2.8vw,32px);line-height:1.18;margin:0 0 28px;text-wrap:pretty">Что здесь интересного инженеру</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px">
+          <p style="font-size:15.5px;line-height:1.62;color:rgba(245,246,247,.78);margin:0;text-wrap:pretty">1С рядом с Go, React и Cloudflare — сочетание, которое редко встретишь.</p>
+          <p style="font-size:15.5px;line-height:1.62;color:rgba(245,246,247,.78);margin:0;text-wrap:pretty">Задачи без готовых ответов: от перевода студента между программами до маркировки в рознице. Сначала моделируем, потом пишем.</p>
+          <p style="font-size:15.5px;line-height:1.62;color:rgba(245,246,247,.78);margin:0;text-wrap:pretty">Решения фиксируем вместе с причинами, а не только результат.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:clamp(32px,4vw,48px);font-size:15.5px;font-weight:600">
+          <a href="https://github.com/aplicon-ru" target="_blank" rel="noopener" style="color:#E8A94D">Посмотреть на GitHub →</a>
+          <a href="/contact" style="color:#E8A94D">Хотите с нами — напишите →</a>
+          <a href="https://academ.aplicon.ru" target="_blank" rel="noopener" style="color:#E8A94D">Сначала научиться — Академия →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

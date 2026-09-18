@@ -1,0 +1,73 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const items = [
+  { q: "Открыт ли исходящий порт 25 и на каких условиях?", why: "Зачем: без него письма не уйдут вовсе, и придётся платить за релей." },
+  { q: "Можно ли задать PTR-запись самостоятельно?", why: "Зачем: без обратной записи крупные почтовые службы отклоняют письма или кладут их в спам." },
+  { q: "Не числится ли выданный адрес в чёрных списках?", why: "Зачем: чужая репутация достаётся вам вместе с адресом и лечится только переездом." },
+  { q: "Есть ли IPv6 и обязательно ли его использовать?", why: "Зачем: отправка по IPv6 без своей PTR и SPF для него — частая причина отказов." },
+  { q: "Как делаются снимки диска и куда они складываются?", why: "Зачем: копия ящиков на том же диске, что и сами ящики, не спасает." },
+  { q: "Что происходит при жалобе на спам: предупреждение или отключение?", why: "Зачем: один взломанный ящик не должен приводить к отключению сервера без предупреждения." },
+];
+---
+<Layout title="Выбор хостинга под свою почту — Апликон">
+  <main>
+    <section style="max-width:760px;margin:0 auto;padding:clamp(40px,5vw,72px) 24px clamp(30px,4vw,44px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:13px;color:rgba(245,246,247,.6);margin-bottom:clamp(22px,3vw,34px)">
+        <a href="/blog" style="color:rgba(245,246,247,.6)">Блог</a>
+        <span style="color:rgba(245,246,247,.35)">→</span>
+        <span>Чек-лист</span>
+      </div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(27px,4vw,44px);line-height:1.16;margin:0;max-width:26ch;text-wrap:pretty">Выбор хостинга под свою почту: что спросить до оплаты</h1>
+    </section>
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(30px,4vw,44px) 24px;border-top:1px solid rgba(245,246,247,.14)">
+      <div style="display:grid">
+        {items.map((it, i) => (
+          <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid rgba(245,246,247,.1)">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:#E8A94D;line-height:1.45">{i + 1}</span>
+            <div>
+              <div style="font-size:17px;font-weight:700;line-height:1.45;margin-bottom:7px;text-wrap:pretty">{it.q}</div>
+              <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">{it.why}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(30px,4vw,44px) 24px;border-top:1px solid rgba(245,246,247,.14)">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 18px">Как проверить за час</h2>
+      <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0 0 24px;max-width:64ch;text-wrap:pretty">Ответы поддержки полезно сверить с реальностью сразу после выдачи сервера. Две команды показывают, уходит ли соединение на порт 25 и что отвечает обратная запись адреса.</p>
+      <div data-code-block style="border:1px solid rgba(245,246,247,.1);border-radius:12px;background:#242F3D;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;border-bottom:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.07em;color:rgba(245,246,247,.62)">проверка площадки</span>
+          <button data-copy style="font-size:12px;font-weight:600;padding:6px 12px;border-radius:7px;border:1px solid rgba(245,246,247,.2);background:transparent;color:rgba(245,246,247,.78);cursor:pointer;flex-shrink:0">Копировать</button>
+        </div>
+        <pre style="margin:0;padding:20px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.7;color:rgba(245,246,247,.88)"># уходит ли порт 25 наружу
+nc -vz gmail-smtp-in.l.google.com 25
+
+# что отвечает обратная запись адреса
+dig -x 203.0.113.10 +short</pre>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(30px,4vw,44px) 24px clamp(64px,9vw,112px);border-top:1px solid rgba(245,246,247,.14)">
+      <a href="/blog/mailstack" style="font-size:16px;font-weight:600;color:#E8A94D">Подробный разбор с таблицами провайдеров →</a>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-copy]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const box = btn.closest("[data-code-block]");
+      const pre = box ? box.querySelector("pre") : null;
+      if (!pre || !navigator.clipboard) return;
+      navigator.clipboard.writeText(pre.textContent || "").then(() => {
+        const old = btn.textContent;
+        btn.textContent = "Скопировано";
+        setTimeout(() => { btn.textContent = old; }, 1600);
+      });
+    });
+  });
+</script>

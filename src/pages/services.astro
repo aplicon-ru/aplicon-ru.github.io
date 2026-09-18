@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const cards = [
+  { title: "Заказная разработка", text: "Веб-платформы, расчётные сервисы, внутренние системы. Собираем архитектуру под задачу, а не под шаблон.", tags: ["Backend", "Frontend", "DevOps"] },
+  { title: "НИОКР и прототипы", text: "Проверяем гипотезу за несколько недель: модель, эксперимент, отчёт с честным выводом — включая отрицательный.", tags: ["Моделирование", "ML"] },
+  { title: "Анализ данных", text: "Приводим разрозненные данные в пригодный вид, строим метрики и модели, на которые можно опираться в решениях.", tags: ["Пайплайны", "Аналитика"] },
+  { title: "Технический аудит", text: "Смотрим код, архитектуру и процессы. Отдаём список рисков с приоритетами и планом, а не абстрактные рекомендации.", tags: ["Архитектура", "Процессы"] },
+  { title: "Корпоративное обучение", text: "Программы под стек и задачи команды заказчика. Практика на их собственном коде и данных.", tags: ["Интенсивы", "Менторство"] },
+  { title: "Поддержка и развитие", text: "Остаёмся с продуктом после запуска: мониторинг, доработки, плановое развитие по договорённому ритму.", tags: ["SLA", "Развитие"] },
+];
+---
+<Layout title="Услуги — Апликон">
+  <main>
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(28px,3vw,44px)">
+      <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E8A94D;margin-bottom:18px">Услуги</div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">Инженерные задачи, у которых нет готового решения</h1>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.62;color:rgba(245,246,247,.72);max-width:62ch;margin:0;text-wrap:pretty">Мы редко делаем типовое. Приходят с задачами, где заранее неизвестно, сработает ли подход — и наша работа начинается с того, чтобы это выяснить.</p>
+    </section>
+    <section style="max-width:1220px;margin:0 auto;padding:0 24px clamp(52px,7vw,92px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px">
+        {cards.map(c => (
+          <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column">
+            <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:20px;margin:0 0 14px">{c.title}</h3>
+            <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0 0 18px">{c.text}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto">
+              {c.tags.map(t => (
+                <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">{t}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

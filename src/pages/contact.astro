@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Контакты — Апликон" active="contact">
+  <main>
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(52px,7vw,92px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(32px,5vw,64px)">
+      <div style="min-width:0">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E8A94D;margin-bottom:18px">Контакты</div>
+        <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:22ch;text-wrap:pretty">Расскажите, над чем работаете</h1>
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.62;color:rgba(245,246,247,.72);max-width:52ch;margin:0 0 34px;text-wrap:pretty">Отвечаем в течение рабочего дня. Если задача исследовательская и вы сами пока не знаете формулировку — тоже пишите, разберёмся вместе.</p>
+        <div style="display:grid;gap:18px;max-width:420px">
+          <div style="border-top:1px solid rgba(245,246,247,.12);padding-top:14px">
+            <div style="font-size:13px;color:rgba(245,246,247,.55);margin-bottom:5px">Почта</div>
+            <a href="mailto:hello@aplicon.ru" style="font-size:17px;font-weight:600">hello@aplicon.ru</a>
+          </div>
+          <div style="border-top:1px solid rgba(245,246,247,.12);padding-top:14px">
+            <div style="font-size:13px;color:rgba(245,246,247,.55);margin-bottom:5px">Обучение</div>
+            <a href="mailto:learn@aplicon.ru" style="font-size:17px;font-weight:600">learn@aplicon.ru</a>
+          </div>
+          <div style="border-top:1px solid rgba(245,246,247,.12);padding-top:14px">
+            <div style="font-size:13px;color:rgba(245,246,247,.55);margin-bottom:5px">Телефон</div>
+            <span style="font-size:17px;font-weight:600;color:#F5F6F7">+7 000 000-00-00</span>
+          </div>
+        </div>
+      </div>
+      <div style="min-width:0;background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:18px;padding:clamp(26px,3vw,36px);display:grid;gap:16px;align-content:start">
+        <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:19px">Написать нам</div>
+        <label style="display:grid;gap:7px;font-size:13.5px;color:rgba(245,246,247,.62)">Имя
+          <input type="text" placeholder="Как к вам обращаться" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border-radius:9px;border:1px solid rgba(245,246,247,.16);background:#1A2430;color:#F5F6F7;outline:none" />
+        </label>
+        <label style="display:grid;gap:7px;font-size:13.5px;color:rgba(245,246,247,.62)">Почта
+          <input type="email" placeholder="you@company.ru" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border-radius:9px;border:1px solid rgba(245,246,247,.16);background:#1A2430;color:#F5F6F7;outline:none" />
+        </label>
+        <label style="display:grid;gap:7px;font-size:13.5px;color:rgba(245,246,247,.62)">Задача
+          <textarea rows="4" placeholder="Пара предложений о том, что нужно сделать" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border-radius:9px;border:1px solid rgba(245,246,247,.16);background:#1A2430;color:#F5F6F7;outline:none;resize:vertical"></textarea>
+        </label>
+        <button type="button" style="font-family:'Manrope',sans-serif;margin-top:4px;padding:15px 24px;border-radius:9px;border:none;background:#E8A94D;color:#1A2430;font-weight:700;font-size:16px;cursor:pointer">Отправить</button>
+        <div style="font-size:12.5px;color:rgba(245,246,247,.5);line-height:1.5">Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.</div>
+      </div>
+    </section>
+  </main>
+</Layout>

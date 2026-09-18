@@ -1,5 +1,16 @@
 # aplicon-ru.github.io
 
-Публичный сайт aplicon.ru — Астро, статика, GitHub Pages.
+Публичный сайт aplicon.ru — Astro, статика, GitHub Pages, автосборка на пуш в main.
 
-Статус: заглушка «в разработке». Контент/структура — см. [backlog/inbox/2026-07-05-aplicon-site-design-v2.md](https://github.com/aplicon-ru/backlog/blob/main/inbox/2026-07-05-aplicon-site-design-v2.md).
+Реализовано по design handoff дизайнера (13 страниц, hi-fi): главная, «Работы» (продукты/проекты/портфолио),
+шаблон страницы продукта («Универкон»), «Команда», «Услуги», «Исследования», «Обучение», «Технологии»,
+блог (список + статья «mailstack» + чек-лист хостинга), «Контакты», «О компании и реквизиты».
+Токены дизайна, шрифты (Unbounded/Manrope/Silkscreen) и логотип — из
+[backlog/inbox](https://github.com/aplicon-ru/backlog/tree/main/inbox), design handoff от дизайнера.
+
+Локальная разработка:
+
+```bash
+npm install
+npm run dev
+```

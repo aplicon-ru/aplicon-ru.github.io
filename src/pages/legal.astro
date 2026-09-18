@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const rows = [
+  ["Наименование", "ООО «Бизнестехнологии»"],
+  ["Юридический адрес", "460040 г. Оренбург, пр. Гагарина 25а, к. 30"],
+  ["Почтовый адрес", "460040 г. Оренбург, пр. Гагарина 25а, к. 30"],
+  ["Адрес нахождения", "460048 г. Оренбург, ул. Потехина д. 27а, оф. 36"],
+  ["р/с", "407 02 810 0 292 500 056 30"],
+  ["Банк", "ФИЛИАЛ «НИЖЕГОРОДСКИЙ» АО «АЛЬФА-БАНК»"],
+  ["БИК", "042 202 824"],
+  ["к/с", "301 01 810 200 000 000 824"],
+  ["ИНН", "56 10 244 039"],
+  ["КПП", "56 10 01 001"],
+  ["ОКПО", "66 65 89 13"],
+  ["ОКВЭД", "72.10"],
+  ["ОГРН", "122 56 00 00 05 26"],
+  ["ЭДО", "2AE66C29DC8-A8EE-4DD6-8B91-787E7EBB0FA1"],
+];
+
+const monoRows = new Set(["р/с", "БИК", "к/с", "ИНН", "КПП", "ОКПО", "ОКВЭД", "ОГРН", "ЭДО"]);
+---
+<Layout title="О компании и реквизиты — Апликон">
+  <main>
+    <section style="max-width:1000px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(32px,4vw,48px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">О компании и реквизиты</h1>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:64ch;margin:0;text-wrap:pretty">При заключении договоров с ООО «Бизнестехнологии» в преамбуле договора необходимо указывать:</p>
+      <p style="font-size:16px;line-height:1.62;color:#F5F6F7;max-width:64ch;margin:18px 0 0;text-wrap:pretty">Общество с ограниченной ответственностью «Бизнес технологии», в лице Генерального директора Мирошниченко Александра Васильевича, действующей на основании устава.</p>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:64ch;margin:18px 0 0;text-wrap:pretty">Также сообщаем свои почтовые и банковские реквизиты для включения в договор:</p>
+    </section>
+    <section style="max-width:1000px;margin:0 auto;padding:0 24px clamp(64px,9vw,112px)">
+      <div style="display:grid">
+        {rows.map(([label, value], i) => (
+          <div style={`display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)${i === rows.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
+            <span style="font-size:14px;color:rgba(245,246,247,.66)">{label}</span>
+            <span style={monoRows.has(label) ? "font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7;word-break:break-all" : "font-size:15.5px;color:#F5F6F7"}>{value}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
