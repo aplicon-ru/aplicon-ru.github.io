@@ -26,7 +26,7 @@ const directions = [
     <section style="max-width:1060px;margin:0 auto;padding:0 24px clamp(20px,3vw,32px)">
       <div style="display:grid">
         {people.map((p, i) => (
-          <div style={`display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:26px 4px;border-top:1px solid rgba(245,246,247,.14)${i === people.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
+          <div class="ap-2col" style={`display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:26px 4px;border-top:1px solid rgba(245,246,247,.14)${i === people.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
             {p.role ? (
               <div>
                 <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">{p.name}</div>
@@ -45,7 +45,7 @@ const directions = [
       <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.2;margin:0 0 clamp(18px,2.5vw,28px)">Направления</h2>
       <div style="display:grid">
         {directions.map((d, i) => (
-          <div style={`display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)${i === directions.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
+          <div class="ap-2col" style={`display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)${i === directions.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
             <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.3">{d.title}</div>
             <div style="display:grid;gap:10px;min-width:0">
               <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">{d.text}</p>

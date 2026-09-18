@@ -74,7 +74,7 @@ function badgeStyle(status: string) {
       <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 20px">Что умеет</h2>
       <div style="display:grid">
         {canDo.map(c => (
-          <div style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px clamp(12px,3vw,32px);padding:18px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <div class="ap-2col" style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px clamp(12px,3vw,32px);padding:18px 0;border-top:1px solid rgba(245,246,247,.1)">
             <div style="font-size:16px;font-weight:700;line-height:1.4">{c.title}</div>
             <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.76);margin:0;text-wrap:pretty">{c.text}</p>
           </div>

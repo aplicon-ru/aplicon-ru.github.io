@@ -41,6 +41,12 @@ const navColor = (key: string) => (key === active ? "#E8A94D" : "rgba(245,246,24
     a { color: #E8A94D; text-decoration: none; }
     a:hover { color: #F3C67F; }
     ::selection { background: #E8A94D; color: #1A2430; }
+    /* Двухколоночные "лейбл + текст" строки (tech/team/works/legal/product/blog) —
+       на узких экранах распадаются на одну колонку, иначе вторая колонка
+       становится слишком узкой и текст обрезается. */
+    @media (max-width: 640px) {
+      .ap-2col { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>

@@ -31,7 +31,7 @@ const monoRows = new Set(["р/с", "БИК", "к/с", "ИНН", "КПП", "ОК�
     <section style="max-width:1000px;margin:0 auto;padding:0 24px clamp(64px,9vw,112px)">
       <div style="display:grid">
         {rows.map(([label, value], i) => (
-          <div style={`display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)${i === rows.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
+          <div class="ap-2col" style={`display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)${i === rows.length - 1 ? ";border-bottom:1px solid rgba(245,246,247,.14)" : ""}`}>
             <span style="font-size:14px;color:rgba(245,246,247,.66)">{label}</span>
             <span style={monoRows.has(label) ? "font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7;word-break:break-all" : "font-size:15.5px;color:#F5F6F7"}>{value}</span>
           </div>
