@@ -13,14 +13,15 @@ export default function WorksPage() {
         <p className="m-0 max-w-[58ch] text-[clamp(15px,1.2vw,17px)] leading-[1.6] text-white/66 text-wrap-pretty">
           Свои продукты, проекты для заказчиков и отдельные работы.
         </p>
-        <nav className="mt-[clamp(26px,3vw,36px)] flex flex-wrap gap-x-5.5 gap-y-2 text-[14.5px] font-semibold">
-          <a href="#works-products" className="text-ap-accent">Продукты</a>
-          <span className="text-white/30">·</span>
-          <a href="#works-projects" className="text-ap-accent">Проекты</a>
-          <span className="text-white/30">·</span>
-          <a href="#works-portfolio" className="text-ap-accent">Портфолио</a>
-        </nav>
       </section>
+
+      <nav className="sticky top-[56px] z-40 border-t border-white/14 border-b border-white/[.09] bg-ap-bg/92 backdrop-blur-[14px]">
+        <div className="mx-auto flex max-w-[1060px] justify-between gap-4 px-6 py-4 text-[16px] font-semibold sm:text-[17px]">
+          <a href="#works-products" className="text-ap-accent">Продукты</a>
+          <a href="#works-projects" className="text-ap-accent">Проекты</a>
+          <a href="#works-portfolio" className="text-ap-accent">Портфолио</a>
+        </div>
+      </nav>
 
       <section id="works-products" className="mx-auto max-w-[1060px] scroll-mt-[90px] px-6 pt-[clamp(30px,4vw,48px)] pb-[clamp(20px,3vw,32px)]">
         <h2 className="m-0 mb-3 font-ap-display text-[clamp(21px,2.4vw,28px)] leading-[1.2] font-medium">Продукты</h2>

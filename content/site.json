@@ -7,6 +7,12 @@
   "phone": "+7 000 000-00-00",
   "academyUrl": "https://academ.aplicon.ru",
   "githubUrl": "https://github.com/aplicon-ru",
+  "messengers": [
+    { "label": "Telegram", "href": "#" },
+    { "label": "MAX", "href": "#" },
+    { "label": "VK", "href": "#" },
+    { "label": "WhatsApp", "href": "#" }
+  ],
   "nav": [
     { "label": "Работы", "href": "/works" },
     { "label": "Команда", "href": "/team" },

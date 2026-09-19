@@ -34,40 +34,25 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-        <div className="min-w-0 grid content-start gap-4 rounded-[18px] border border-white/[.09] bg-ap-surface p-[clamp(26px,3vw,36px)]">
-          <div className="font-ap-display text-[19px] font-medium">Написать нам</div>
-          <label className="grid gap-1.75 text-[13.5px] text-white/62">
-            Имя
-            <input
-              type="text"
-              placeholder="Как к вам обращаться"
-              className="rounded-[9px] border border-white/16 bg-ap-bg px-3.75 py-3.25 text-[15px] text-ap-ink outline-none focus:border-ap-accent"
-            />
-          </label>
-          <label className="grid gap-1.75 text-[13.5px] text-white/62">
-            Почта
-            <input
-              type="email"
-              placeholder="you@company.ru"
-              className="rounded-[9px] border border-white/16 bg-ap-bg px-3.75 py-3.25 text-[15px] text-ap-ink outline-none focus:border-ap-accent"
-            />
-          </label>
-          <label className="grid gap-1.75 text-[13.5px] text-white/62">
-            Задача
-            <textarea
-              rows={4}
-              placeholder="Пара предложений о том, что нужно сделать"
-              className="resize-y rounded-[9px] border border-white/16 bg-ap-bg px-3.75 py-3.25 text-[15px] text-ap-ink outline-none focus:border-ap-accent"
-            />
-          </label>
-          <button
-            type="button"
-            className="mt-1 rounded-[9px] bg-ap-accent px-6 py-3.75 text-base font-bold text-ap-bg hover:!bg-ap-accent-hover"
-          >
-            Отправить
-          </button>
-          <div className="text-[12.5px] leading-[1.5] text-white/50">
-            Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
+        <div className="min-w-0 grid content-start gap-5 rounded-[18px] border border-white/[.09] bg-ap-surface p-[clamp(26px,3vw,36px)]">
+          <div>
+            <div className="font-ap-display text-[19px] font-medium">Написать в мессенджер</div>
+            <p className="m-0 mt-2 text-[14px] leading-[1.5] text-white/62">
+              Быстрее всего — в один из этих. Отвечаем сами, без ботов.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {site.messengers.map((m) => (
+              <a
+                key={m.label}
+                href={m.href}
+                target="_blank"
+                rel="noopener"
+                className="rounded-[9px] border border-white/16 px-4 py-3.25 text-center text-[15px] font-semibold text-ap-ink hover:!border-ap-accent/60 hover:!text-ap-accent"
+              >
+                {m.label}
+              </a>
+            ))}
           </div>
         </div>
       </section>
