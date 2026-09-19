@@ -49,9 +49,14 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: METRIKA_INLINE_SCRIPT }} />
       </head>
       <body>
-        <div className="min-h-screen overflow-x-clip bg-ap-bg text-ap-ink text-base">
+        <div className="flex min-h-screen flex-col overflow-x-clip bg-ap-bg text-ap-ink text-base md:block">
           <SiteHeader />
-          {children}
+          {/* На мобиле растягивается на весь остаток экрана, чтобы подвал
+              не болтался в пустоте, а стоял у нижнего края при открытии
+              (высота сама подстраивается под контент/экран). На десктопе
+              (md:) — display:contents, обёртка выключена из раскладки,
+              ничего не меняется. */}
+          <div className="flex-1 md:contents">{children}</div>
           <SiteFooter />
         </div>
         <noscript>
