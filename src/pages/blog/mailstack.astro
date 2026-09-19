@@ -1,19 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
-const toc = [
-  { id: "a-result", n: "10", label: "Результат" },
-  { id: "a-parts", n: "20", label: "Состав" },
-  { id: "a-place", n: "30", label: "Площадка" },
-  { id: "a-relay", n: "40", label: "MX или релей" },
-  { id: "a-ask", n: "50", label: "Вопросы провайдеру" },
-  { id: "a-dns", n: "60", label: "DNS" },
-  { id: "a-tls", n: "70", label: "Сертификаты" },
-  { id: "a-clients", n: "80", label: "Клиенты" },
-  { id: "a-move", n: "90", label: "Переезд" },
-  { id: "a-sec", n: "100", label: "Безопасность" },
-  { id: "a-end", n: "110", label: "Итоги" },
-];
+import toc from "../../data/mailstack-toc.json";
 ---
 <Layout title="Своя почта для нескольких доменов на одном VPS — Апликон">
   <main>

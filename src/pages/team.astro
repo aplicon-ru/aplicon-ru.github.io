@@ -1,19 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const people = [
-  { name: "Александр", role: "архитектор и вдохновитель", text: "Отвечает за то, как всё устроено: от модели предметной области до контрактов между системами. Больше 25 лет в 1С, от 7.7 до 8.5." },
-  { name: "Дизайнер", role: null, text: "Интерфейсы, фирменный стиль, печатные материалы." },
-  { name: "Системный администратор", role: null, text: "Серверы, сети, доступы, работа систем в бою." },
-  { name: "Разработчики", role: null, text: "Подключаются под проект. В том числе выпускники и стажёры Академии — под присмотром архитектора." },
-];
-
-const directions = [
-  { title: "Разработка", text: "Свои продукты и работа под заказчика.", link: "/works", label: "Работы →" },
-  { title: "Обучение", text: "Академия iMiron: готовим 1С-инженеров.", link: "https://academ.aplicon.ru", label: "academ.aplicon.ru ↗", external: true },
-  { title: "Исследования", text: "Открытые модели предметных областей.", link: "https://github.com/aplicon-ru", label: "GitHub ↗", external: true },
-  { title: "Технологии", text: "Чем работаем и почему так.", link: "/tech", label: "Технологии →" },
-];
+import { people, directions } from "../data/team.json";
 ---
 <Layout title="Команда — Апликон" active="team">
   <main>
