@@ -7,7 +7,7 @@ export default function SiteFooter() {
       <div className="mx-auto grid max-w-[1220px] grid-cols-2 gap-8 px-6 py-[clamp(40px,5vw,60px)] md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))]">
         <div className="col-span-2 md:col-span-1">
           <img src="/logo-aplicon.svg" alt={site.name} className="mb-4 block h-8 w-auto" />
-          <p className="m-0 max-w-[34ch] text-[13.5px] leading-[1.55] text-white/68">{site.tagline}</p>
+          <p className="m-0 text-[clamp(9px,3.4vw,13.5px)] leading-[1.55] whitespace-nowrap text-white/68">{site.tagline}</p>
         </div>
         <div className="grid content-start gap-2.5 text-[14.5px]">
           <div className="mb-1 text-[12.5px] tracking-[.12em] uppercase text-white/62">Команда</div>
