@@ -1,26 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import toc from "../../../content/mailstack-toc.json";
+import { useTocActive } from "./useTocActive";
 
+// Десктопная боковая колонка. На мобиле скрыта — там ArticleTocMobile
+// (выпадающий список, прилипает под шапкой при прокрутке).
 export default function ArticleToc() {
-  const [active, setActive] = useState<string | null>(null);
-
-  useEffect(() => {
-    const els = toc.map((t) => document.getElementById(t.id)).filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-110px 0px -70% 0px" },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+  const active = useTocActive(toc.map((t) => t.id));
 
   return (
-    <aside className="order-1 min-w-0 flex-[1_1_180px]">
+    <aside className="order-1 hidden min-w-0 flex-[1_1_180px] md:block">
       <div className="sticky top-24 py-7 pt-[clamp(30px,4vw,64px)]">
         <div className="mb-4 font-ap-mono text-[11px] tracking-[.14em] text-white/50 uppercase">Содержание</div>
         <nav className="grid gap-2.75 text-[13.5px] leading-[1.4]">

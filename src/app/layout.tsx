@@ -3,6 +3,7 @@ import { Unbounded, Manrope, Silkscreen } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { site } from "@/lib/content/site";
 import { METRIKA_COUNTER_ID, METRIKA_INLINE_SCRIPT } from "@/lib/metrika";
 
@@ -59,6 +60,7 @@ export default function RootLayout({
           <div className="flex-1 md:contents">{children}</div>
           <SiteFooter />
         </div>
+        <ScrollToTopButton />
         <noscript>
           <div>
             <img

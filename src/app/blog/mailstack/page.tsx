@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ReadingProgress from "@/components/article/ReadingProgress";
 import ArticleToc from "@/components/article/ArticleToc";
+import ArticleTocMobile from "@/components/article/ArticleTocMobile";
 import CodeBlock from "@/components/article/CodeBlock";
 
 export const metadata: Metadata = { title: "Своя почта для нескольких доменов на одном VPS" };
@@ -16,6 +17,7 @@ export default function MailstackPage() {
   return (
     <main>
       <ReadingProgress />
+      <ArticleTocMobile />
 
       <div className="mx-auto flex max-w-[1140px] items-stretch flex-wrap gap-x-[clamp(24px,4vw,64px)] gap-y-0 px-6">
         <ArticleToc />
