@@ -9,14 +9,19 @@ export const metadata: Metadata = { title: "Универкон" };
 export default function UniverkonPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[760px] px-6 pt-[clamp(40px,5vw,72px)] pb-[clamp(30px,4vw,48px)]">
-        <div className="mb-[clamp(24px,3vw,36px)] flex flex-wrap items-baseline gap-2 text-[13px] text-white/60">
+      <div className="mx-auto max-w-[760px] px-6 pt-[clamp(20px,3vw,30px)]">
+        <div className="flex flex-wrap items-baseline gap-2 text-[13px] text-white/60">
           <Link href="/works" className="text-white/60 hover:!text-ap-accent">Работы</Link>
           <span className="text-white/35">→</span>
           <Link href="/works#works-products" className="text-white/60 hover:!text-ap-accent">Продукты</Link>
           <span className="text-white/35">→</span>
           <span>Универкон</span>
         </div>
+      </div>
+
+      <ProductTocNav />
+
+      <section className="mx-auto max-w-[760px] px-6 pt-[clamp(28px,3.5vw,44px)] pb-[clamp(30px,4vw,48px)]">
         <div className="flex flex-wrap items-center justify-between gap-3.5">
           <h1 className="m-0 font-ap-display text-[clamp(32px,5vw,54px)] leading-[1.1] font-medium">Универкон</h1>
           <StatusBadge status="в разработке" />
@@ -30,8 +35,6 @@ export default function UniverkonPage() {
           <Link href="/contact" className="text-ap-accent">Написать нам →</Link>
         </div>
       </section>
-
-      <ProductTocNav />
 
       <section id="p-task" className="mx-auto max-w-[760px] scroll-mt-[104px] px-6 py-[clamp(34px,4vw,52px)]">
         <h2 className="m-0 mb-5.5 font-ap-display text-[clamp(20px,2.2vw,26px)] leading-[1.22] font-medium">Какую задачу решает</h2>

@@ -17,18 +17,22 @@ export default function MailstackPage() {
   return (
     <main>
       <ReadingProgress />
+
+      <div className="mx-auto max-w-[1140px] px-6 pt-[clamp(20px,3vw,30px)]">
+        <div className="flex flex-wrap items-baseline gap-2 text-[13px] text-white/60">
+          <Link href="/blog" className="text-white/60 hover:!text-ap-accent">Блог</Link>
+          <span className="text-white/35">→</span>
+          <span>mailstack</span>
+        </div>
+      </div>
+
       <ArticleTocMobile />
 
       <div className="mx-auto flex max-w-[1140px] items-stretch flex-wrap gap-x-[clamp(24px,4vw,64px)] gap-y-0 px-6">
         <ArticleToc />
 
         <div className="order-2 min-w-0 flex-[6_1_600px]">
-          <section className="pt-[clamp(30px,4vw,64px)] pb-[clamp(28px,3.5vw,40px)]">
-            <div className="mb-[clamp(20px,3vw,30px)] flex flex-wrap items-baseline gap-2 text-[13px] text-white/60">
-              <Link href="/blog" className="text-white/60 hover:!text-ap-accent">Блог</Link>
-              <span className="text-white/35">→</span>
-              <span>mailstack</span>
-            </div>
+          <section className="pt-[clamp(20px,3vw,32px)] pb-[clamp(28px,3.5vw,40px)]">
             <h1 className="m-0 font-ap-display text-[clamp(28px,4.2vw,46px)] leading-[1.16] font-medium tracking-[-.005em] text-wrap-pretty">
               Своя почта для нескольких доменов на одном VPS
             </h1>
