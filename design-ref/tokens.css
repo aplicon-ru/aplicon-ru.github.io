@@ -1,0 +1,49 @@
+/* Апликон — design tokens. Reference values lifted from the HTML prototype.
+   The prototype itself uses inline styles; this file is for the implementation. */
+
+:root {
+  /* Colour */
+  --ap-bg: #1A2430;          /* page background */
+  --ap-surface: #242F3D;     /* cards, table headers, code blocks */
+  --ap-accent: #E8A94D;      /* amber: links, active states, numerals */
+  --ap-accent-hover: #F3C67F;
+  --ap-ink: #F5F6F7;         /* primary text */
+  --ap-logo-grey: #3B4757;   /* logo diagonal only — not a UI colour */
+
+  /* Text on dark, by role (alpha over --ap-bg) */
+  --ap-ink-90: rgba(245, 246, 247, .9);
+  --ap-ink-86: rgba(245, 246, 247, .86);  /* lede */
+  --ap-ink-82: rgba(245, 246, 247, .82);  /* body */
+  --ap-ink-72: rgba(245, 246, 247, .72);
+  --ap-ink-66: rgba(245, 246, 247, .66);  /* muted body */
+  --ap-ink-62: rgba(245, 246, 247, .62);  /* meta, captions — contrast floor */
+
+  /* Lines */
+  --ap-rule: rgba(245, 246, 247, .14);    /* section dividers */
+  --ap-rule-soft: rgba(245, 246, 247, .12);
+  --ap-rule-hair: rgba(245, 246, 247, .1); /* rows inside a block */
+  --ap-border-card: rgba(245, 246, 247, .09);
+  --ap-badge-border: rgba(245, 246, 247, .28);
+  --ap-badge-border-accent: rgba(232, 169, 77, .55);
+
+  /* Type */
+  --ap-font-display: "Unbounded", sans-serif;      /* 400/500/600 */
+  --ap-font-text: "Manrope", system-ui, sans-serif; /* 400/500/600/700 */
+  --ap-font-pixel: "Silkscreen", ui-monospace, monospace; /* section numerals */
+  --ap-font-mono: ui-monospace, Menlo, Consolas, monospace;
+
+  /* Radius */
+  --ap-r-card: 16px;
+  --ap-r-block: 14px;
+  --ap-r-code: 12px;
+  --ap-r-btn: 9px;
+  --ap-r-pill: 99px;
+
+  /* Layout */
+  --ap-w-wide: 1220px;   /* header, footer, card grids */
+  --ap-w-mid: 1060px;    /* /works, /team */
+  --ap-w-article: 1140px;/* article incl. TOC rail */
+  --ap-w-text: 760px;    /* product page column */
+  --ap-pad-x: 24px;
+  --ap-header-h: 59px;
+}

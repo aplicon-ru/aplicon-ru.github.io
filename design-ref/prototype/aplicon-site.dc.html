@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #1A2430; }
+  body { font-family: "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #E8A94D; text-decoration: none; }
+  a:hover { color: #F3C67F; }
+  ::selection { background: #E8A94D; color: #1A2430; }
+</style>
+</helmet>
+
+<div style="background:#1A2430;color:#F5F6F7;min-height:100vh;overflow-x:clip;font-size:16px">
+
+  <header style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(26,36,48,.85);border-bottom:1px solid rgba(245,246,247,.09)">
+    <div style="max-width:1220px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:nowrap">
+      <a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:12px;color:#F5F6F7;flex-shrink:0" style-hover="color:#F5F6F7">
+        <img src="logo-aplicon.svg" alt="Апликон" style="display:block;height:30px;width:auto" />
+      </a>
+      <nav style="display:flex;gap:clamp(11px,1.5vw,26px);flex:1 1 auto;min-width:0;justify-content:flex-end;flex-wrap:wrap;font-size:clamp(12.5px,1.15vw,14.5px);font-weight:500">
+        <a href="#" onClick="{{ goWorks }}" style="color:{{ cWorks }}" style-hover="color:#F5F6F7">Работы</a>
+        <a href="#" onClick="{{ goTeam }}" style="color:{{ cTeam }}" style-hover="color:#F5F6F7">Команда</a>
+        <a href="#" onClick="{{ goContact }}" style="color:{{ cContact }}" style-hover="color:#F5F6F7">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Главная">
+    <section style="max-width:1000px;margin:0 auto;padding:clamp(60px,9vw,128px) 24px clamp(80px,12vw,160px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.6vw,54px);line-height:1.34;letter-spacing:-.01em;margin:0 0 28px;max-width:19ch;text-wrap:pretty"><span style="background:#E8A94D;color:#1A2430;padding:.1em .2em;box-decoration-break:clone;-webkit-box-decoration-break:clone">Без погружения не работаем.</span></h1>
+      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.62;color:rgba(245,246,247,.72);max-width:56ch;margin:0;text-wrap:pretty">Если на задачу есть час, 55 минут мы тратим на то, чтобы в ней разобраться.</p>
+      <p style="font-size:clamp(14px,1.05vw,15.5px);line-height:1.6;color:rgba(245,246,247,.62);max-width:58ch;margin:clamp(28px,3vw,40px) 0 0;text-wrap:pretty">Так мы работали, когда половины нынешних технологий ещё не было. Теперь работаем с ними — тем же способом.</p>
+      <a href="/tech" onClick="{{ goTech }}" style="display:inline-flex;align-items:center;gap:9px;margin-top:14px;font-size:15.5px;font-weight:600;color:#E8A94D" style-hover="color:#F3C67F">Наш стек <span>→</span></a>
+    </section>
+
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Услуги">
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(28px,3vw,44px)">
+      <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E8A94D;margin-bottom:18px">Услуги</div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">Инженерные задачи, у которых нет готового решения</h1>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.62;color:rgba(245,246,247,.72);max-width:62ch;margin:0;text-wrap:pretty">Мы редко делаем типовое. Приходят с задачами, где заранее неизвестно, сработает ли подход — и наша работа начинается с того, чтобы это выяснить.</p>
+    </section>
+    <section style="max-width:1220px;margin:0 auto;padding:0 24px clamp(52px,7vw,92px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px">
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:20px;margin:0 0 14px">Заказная разработка</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0 0 18px">Веб-платформы, расчётные сервисы, внутренние системы. Собираем архитектуру под задачу, а не под шаблон.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto">
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Backend</span>
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Frontend</span>
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">DevOps</span>
+          </div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:20px;margin:0 0 14px">НИОКР и прототипы</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0 0 18px">Проверяем гипотезу за несколько недель: модель, эксперимент, отчёт с честным выводом — включая отрицательный.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto">
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Моделирование</span>
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">ML</span>
+          </div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:20px;margin:0 0 14px">Анализ данных</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0 0 18px">Приводим разрозненные данные в пригодный вид, строим метрики и модели, на которые можно опираться в решениях.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto">
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Пайплайны</span>
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Аналитика</span>
+          </div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:20px;margin:0 0 14px">Технический аудит</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0 0 18px">Смотрим код, архитектуру и процессы. Отдаём список рисков с приоритетами и планом, а не абстрактные рекомендации.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto">
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Архитектура</span>
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Процессы</span>
+          </div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:20px;margin:0 0 14px">Корпоративное обучение</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0 0 18px">Программы под стек и задачи команды заказчика. Практика на их собственном коде и данных.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto">
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Интенсивы</span>
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Менторство</span>
+          </div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:20px;margin:0 0 14px">Поддержка и развитие</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0 0 18px">Остаёмся с продуктом после запуска: мониторинг, доработки, плановое развитие по договорённому ритму.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:auto">
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">SLA</span>
+            <span style="font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid rgba(232,169,77,.45);color:#E8A94D">Развитие</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isResearch }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Исследования">
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(36px,4vw,56px)">
+      <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E8A94D;margin-bottom:18px">Исследования и публикации</div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">Исследуем то, что потом идёт в продукт</h1>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.62;color:rgba(245,246,247,.72);max-width:62ch;margin:0;text-wrap:pretty">Исследовательская часть работы не изолирована от инженерной. Результаты попадают в наши проекты, в курсы и в открытые публикации.</p>
+    </section>
+    <section style="max-width:1220px;margin:0 auto;padding:0 24px clamp(44px,5vw,72px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">
+        <div style="border:1px solid rgba(245,246,247,.11);border-radius:16px;padding:26px">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:18px;margin:0 0 12px">Численные методы</h3>
+          <p style="font-size:14.5px;line-height:1.58;color:rgba(245,246,247,.68);margin:0">Модели физических и производственных процессов, оптимизация расчётов под ограниченные ресурсы.</p>
+        </div>
+        <div style="border:1px solid rgba(245,246,247,.11);border-radius:16px;padding:26px">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:18px;margin:0 0 12px">Машинное обучение</h3>
+          <p style="font-size:14.5px;line-height:1.58;color:rgba(245,246,247,.68);margin:0">Прикладные модели для задач с малыми и «грязными» данными: где обычный подход не работает.</p>
+        </div>
+        <div style="border:1px solid rgba(245,246,247,.11);border-radius:16px;padding:26px">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:18px;margin:0 0 12px">Инженерия данных</h3>
+          <p style="font-size:14.5px;line-height:1.58;color:rgba(245,246,247,.68);margin:0">Архитектура сбора и обработки потоков, воспроизводимость вычислительных экспериментов.</p>
+        </div>
+        <div style="border:1px solid rgba(245,246,247,.11);border-radius:16px;padding:26px">
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:18px;margin:0 0 12px">Методика обучения</h3>
+          <p style="font-size:14.5px;line-height:1.58;color:rgba(245,246,247,.68);margin:0">Как быстро выводить инженера на рабочий уровень в новой области. Проверяем на своих программах.</p>
+        </div>
+      </div>
+    </section>
+    <section style="background:#242F3D;border-top:1px solid rgba(245,246,247,.09)">
+      <div style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px">
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(23px,2.8vw,32px);line-height:1.18;margin:0 0 30px">Публикации</h2>
+        <div style="display:grid;gap:0">
+          <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(245,246,247,.12)">
+            <span style="font-family:'Unbounded',sans-serif;font-size:13px;color:#E8A94D">2026</span>
+            <div><div style="font-size:16.5px;font-weight:600;line-height:1.4;margin-bottom:6px;text-wrap:pretty">Ускорение инженерных расчётов на разреженных сетках</div><div style="font-size:13.5px;color:rgba(245,246,247,.6)">Сборник конференции · препринт</div></div>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.5);white-space:nowrap">PDF</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(245,246,247,.12)">
+            <span style="font-family:'Unbounded',sans-serif;font-size:13px;color:#E8A94D">2025</span>
+            <div><div style="font-size:16.5px;font-weight:600;line-height:1.4;margin-bottom:6px;text-wrap:pretty">Обучение моделей на малых промышленных выборках</div><div style="font-size:13.5px;color:rgba(245,246,247,.6)">Научный журнал · статья</div></div>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.5);white-space:nowrap">PDF</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(245,246,247,.12)">
+            <span style="font-family:'Unbounded',sans-serif;font-size:13px;color:#E8A94D">2025</span>
+            <div><div style="font-size:16.5px;font-weight:600;line-height:1.4;margin-bottom:6px;text-wrap:pretty">Воспроизводимость вычислительных экспериментов в прикладных проектах</div><div style="font-size:13.5px;color:rgba(245,246,247,.6)">Технический отчёт</div></div>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.5);white-space:nowrap">PDF</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(245,246,247,.12);border-bottom:1px solid rgba(245,246,247,.12)">
+            <span style="font-family:'Unbounded',sans-serif;font-size:13px;color:#E8A94D">2024</span>
+            <div><div style="font-size:16.5px;font-weight:600;line-height:1.4;margin-bottom:6px;text-wrap:pretty">Практика наставничества в инженерных командах</div><div style="font-size:13.5px;color:rgba(245,246,247,.6)">Доклад · материалы семинара</div></div>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.5);white-space:nowrap">PDF</span>
+          </div>
+        </div>
+        <p style="font-size:13.5px;color:rgba(245,246,247,.62);margin:24px 0 0">Список черновой — заменим на реальные работы и ссылки.</p>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isLearning }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Обучение">
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(36px,4vw,56px)">
+      <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E8A94D;margin-bottom:18px">Курсы и программы</div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">Учим на реальных проектах, а не на учебных примерах</h1>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.62;color:rgba(245,246,247,.72);max-width:62ch;margin:0;text-wrap:pretty">Программы ведут инженеры, которые сейчас работают над задачами Апликона. Материал курса — код и данные из практики, а не синтетические задачи.</p>
+    </section>
+    <section style="max-width:1220px;margin:0 auto;padding:0 24px clamp(44px,5vw,72px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+            <span style="font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#E8A94D">Интенсив</span>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.6)">8 недель</span>
+          </div>
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:21px;margin:0;line-height:1.24">Прикладная разработка на Python</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0">От устройства языка до промышленного кода: тесты, профилирование, работа с расчётными библиотеками.</p>
+          <div style="margin-top:auto;padding-top:10px;font-size:13.5px;color:rgba(245,246,247,.6);border-top:1px solid rgba(245,246,247,.12)">Для студентов старших курсов и junior-инженеров</div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+            <span style="font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#E8A94D">Курс</span>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.6)">12 недель</span>
+          </div>
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:21px;margin:0;line-height:1.24">Данные и машинное обучение в инженерии</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0">Как довести модель от ноутбука до сервиса: подготовка данных, валидация, деплой, мониторинг качества.</p>
+          <div style="margin-top:auto;padding-top:10px;font-size:13.5px;color:rgba(245,246,247,.6);border-top:1px solid rgba(245,246,247,.12)">Нужен опыт программирования</div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+            <span style="font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#E8A94D">Практикум</span>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.6)">6 недель</span>
+          </div>
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:21px;margin:0;line-height:1.24">Численное моделирование</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0">Постановка задачи, выбор метода, оценка погрешности. Разбираем на задачах из наших проектов.</p>
+          <div style="margin-top:auto;padding-top:10px;font-size:13.5px;color:rgba(245,246,247,.6);border-top:1px solid rgba(245,246,247,.12)">Математика уровня технического вуза</div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline">
+            <span style="font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#E8A94D">Для команд</span>
+            <span style="font-size:13.5px;color:rgba(245,246,247,.6)">по договорённости</span>
+          </div>
+          <h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:21px;margin:0;line-height:1.24">Корпоративная программа</h3>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0">Собираем курс под стек и задачи конкретной команды. Практика — на их собственном проекте.</p>
+          <div style="margin-top:auto;padding-top:10px;font-size:13.5px;color:rgba(245,246,247,.6);border-top:1px solid rgba(245,246,247,.12)">Онлайн или на площадке заказчика</div>
+        </div>
+      </div>
+    </section>
+    <section style="border-top:1px solid rgba(245,246,247,.09)">
+      <div style="max-width:1220px;margin:0 auto;padding:clamp(44px,6vw,80px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px">
+        <div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:15px;color:#E8A94D;margin-bottom:12px">Формат</div>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0">Живые занятия в небольших группах, разбор кода участников, открытая запись всех сессий.</p>
+        </div>
+        <div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:15px;color:#E8A94D;margin-bottom:12px">Проверка работ</div>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0">Каждое задание читает инженер и пишет развёрнутый отзыв. Без автотестов вместо ревью.</p>
+        </div>
+        <div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:15px;color:#E8A94D;margin-bottom:12px">После курса</div>
+          <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);margin:0">Лучших выпускников приглашаем в проекты Апликона — стажировкой или сразу в команду.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isTech }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Технологии">
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(36px,4vw,56px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">Технологии</h1>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:58ch;margin:0;text-wrap:pretty">Инструменты выбираем под задачу, а не под моду. Вот чем работаем сейчас.</p>
+    </section>
+    <section style="max-width:1060px;margin:0 auto;padding:clamp(30px,4vw,48px) 24px clamp(56px,7vw,88px)">
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Учётные системы на 1С</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Торговля, склад, кадры, образование: дорабатываем типовые конфигурации и пишем свои.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">1С:Предприятие 8.5 · БСП · внешние компоненты</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: 1С уже стоит у большинства компаний. Разумнее довести до ума то, что есть, чем заводить ещё одну систему.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Связь между системами</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Системы обмениваются данными по заранее описанным правилам, а не через выгрузки в Excel.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">Go · Node.js · OpenRPC · REST · OAuth2 / OIDC · JWT (RS256, JWKS)</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: договорённость описана заранее и проверяется машиной. Одну систему нельзя обновить так, чтобы незаметно сломать другую.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Приложения для людей</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Сотрудник или клиент работает с телефона, даже когда связь пропала.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">TypeScript · React · PWA · RxDB · SSE · Web Push · Telegram Mini Apps</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: на складе, в цеху и в аудитории связь плохая. Данные хранятся на устройстве и досинхронизируются, когда сеть вернётся.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Установка и обновления</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Ставится на ваши серверы и обновляется без ночных звонков админу.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">Go · Docker · Harbor + GHCR · веб, TUI и CLI из одного файла · тихая установка MS SQL и PostgreSQL</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: данные остаются у вас. Если обновление не удалось, система сама возвращается к прошлой версии.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Резервные копии</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Базы 1С копируются по расписанию и восстанавливаются, пользователей для этого не выгоняют.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">Go · плагины: папка, SFTP, S3, Яндекс Диск · метрики в Zabbix / Prometheus</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: делаем только полные копии. Цепочки разностных копий рвутся ровно тогда, когда копия нужна.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Защищённый доступ</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Сотрудник заходит в рабочие системы из дома по сертификату на токене, без VPN.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">mTLS · ГОСТ · Рутокен · OIDC</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: доступ привязан к кадровой системе. Уволили человека — доступ закрылся сам.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Лицензии и защита контента</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Коммерческие разработки продаются с лицензией и активацией, видео нельзя просто скачать.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">JWS · Cloudflare Workers · HLS AES-128</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: ключ проверяется на границе сети, а не в коде, который легко обойти.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Знаем и подключаем</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Государственные и отраслевые системы, с которыми работаем.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">ФИС ФРДО · ФИС ГИА и приёма · Честный знак · ФФД 1.2</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: одна запись не заводится дважды, поэтому расходиться нечему.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(14px,3vw,40px);padding:30px 4px;border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.14)">
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,20px);margin:0;line-height:1.3">Открытость</h2>
+          <div style="display:grid;gap:12px;min-width:0">
+            <p style="font-size:16px;line-height:1.55;color:#F5F6F7;margin:0;text-wrap:pretty">Модели предметных областей и часть инструментов публикуем открыто.</p>
+            <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;color:#E8A94D;margin:0">GitHub · edu-framework · CC BY-SA · AGPL-3.0</p>
+            <p style="font-size:14px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Почему: своё понимание не прячем. Проверяйте, спорьте, используйте.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="border-top:1px solid rgba(245,246,247,.09);background:#242F3D">
+      <div style="max-width:1060px;margin:0 auto;padding:clamp(48px,6vw,84px) 24px">
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(23px,2.8vw,32px);line-height:1.18;margin:0 0 28px;text-wrap:pretty">Что здесь интересного инженеру</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px">
+          <p style="font-size:15.5px;line-height:1.62;color:rgba(245,246,247,.78);margin:0;text-wrap:pretty">1С рядом с Go, React и Cloudflare — сочетание, которое редко встретишь.</p>
+          <p style="font-size:15.5px;line-height:1.62;color:rgba(245,246,247,.78);margin:0;text-wrap:pretty">Задачи без готовых ответов: от перевода студента между программами до маркировки в рознице. Сначала моделируем, потом пишем.</p>
+          <p style="font-size:15.5px;line-height:1.62;color:rgba(245,246,247,.78);margin:0;text-wrap:pretty">Решения фиксируем вместе с причинами, а не только результат.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;margin-top:clamp(32px,4vw,48px);font-size:15.5px;font-weight:600">
+          <a href="#" target="_blank" rel="noopener" style="color:#E8A94D" style-hover="color:#F3C67F">Посмотреть на GitHub →</a>
+          <a href="#" onClick="{{ goContact }}" style="color:#E8A94D" style-hover="color:#F3C67F">Хотите с нами — напишите →</a>
+          <a href="https://academ.aplicon.ru" target="_blank" rel="noopener" style="color:#E8A94D" style-hover="color:#F3C67F">Сначала научиться — Академия →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isWorks }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Работы">
+    <section style="max-width:1060px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(28px,3vw,44px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;text-wrap:pretty">Работы</h1>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:58ch;margin:0;text-wrap:pretty">Свои продукты, проекты для заказчиков и отдельные работы.</p>
+      <nav style="display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:clamp(26px,3vw,36px);font-size:14.5px;font-weight:600">
+        <a href="#works-products" style="color:#E8A94D" style-hover="color:#F3C67F">Продукты</a>
+        <span style="color:rgba(245,246,247,.3)">·</span>
+        <a href="#works-projects" style="color:#E8A94D" style-hover="color:#F3C67F">Проекты</a>
+        <span style="color:rgba(245,246,247,.3)">·</span>
+        <a href="#works-portfolio" style="color:#E8A94D" style-hover="color:#F3C67F">Портфолио</a>
+      </nav>
+    </section>
+
+    <section id="works-products" style="max-width:1060px;margin:0 auto;padding:clamp(30px,4vw,48px) 24px clamp(20px,3vw,32px);scroll-margin-top:90px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.2;margin:0 0 12px">Продукты</h2>
+      <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);max-width:56ch;margin:0 0 clamp(18px,2.5vw,28px);text-wrap:pretty">Своё, тиражируемое: ставим не одному заказчику, развиваем сами.</p>
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <a href="#" onClick="{{ goProduct }}" style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3;color:#F5F6F7" style-hover="color:#E8A94D">Универкон</a>
+            <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.6);white-space:nowrap">в разработке</span>
+          </div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Управление вузом, колледжем и центром ДПО: контингент, учебные планы, приказы, личные кабинеты. Ставится на серверы заказчика.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Архикон</span>
+            <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.6);white-space:nowrap">в разработке</span>
+          </div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Резервное копирование баз 1С. Ставится рядом с базами, находит их сам, копирует по расписанию и восстанавливает.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Лицензикон и Активикон</span>
+            <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.6);white-space:nowrap">в разработке</span>
+          </div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Лицензии, активации и подписки на обновления для коммерческих расширений 1С.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Метакон</span>
+            <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.62);white-space:nowrap">замысел</span>
+          </div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Тренажёр для подготовки к экзамену 1С:Специалист: задачи генерируются, решение проверяется автоматически.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Ярлыкон</span>
+            <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(232,169,77,.55);color:#E8A94D;white-space:nowrap">работает</span>
+          </div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Сокращатель ссылок со своей статистикой и Telegram Mini App.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.14)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Тестикон</span>
+            <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.62);white-space:nowrap">замысел</span>
+          </div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Среда прогона тестов для 1С-разработки.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="works-projects" style="max-width:1060px;margin:0 auto;padding:clamp(34px,4vw,56px) 24px clamp(20px,3vw,32px);scroll-margin-top:90px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.2;margin:0 0 12px">Проекты</h2>
+      <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);max-width:56ch;margin:0 0 clamp(18px,2.5vw,28px);text-wrap:pretty">Работа для конкретного заказчика: архитектура, внедрение, миграция.</p>
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.34;text-wrap:pretty">Цифровизация медицинского вуза</span>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Архитектура информационных систем, интеграции, перевод бумажных процессов в учёт.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.34;text-wrap:pretty">Переход с Active Directory на ALD Pro</span>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Служба каталога без иностранного ПО: пользователи, политики, рабочие места.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.34;text-wrap:pretty">Почтовый сервер корпоративного домена</span>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Свой сервер вместо арендованных ящиков: домен, защита, резервные копии.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.34;text-wrap:pretty">Единый архив образовательных программ</span>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Все программы по специальностям и годам набора собраны в один контур с понятной структурой.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.14)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.34;text-wrap:pretty">Сопровождение иностранных студентов</span>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Регламент работы с образовательным рекрутером: документы, учёт, сопровождение.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="works-portfolio" style="max-width:1060px;margin:0 auto;padding:clamp(34px,4vw,56px) 24px clamp(64px,9vw,112px);scroll-margin-top:90px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.2;margin:0 0 12px">Портфолио</h2>
+      <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);max-width:56ch;margin:0 0 clamp(18px,2.5vw,28px);text-wrap:pretty">Отдельные работы: сайты, компоненты, утилиты.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px">
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;line-height:1.3">mailstack</span>
+            <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(232,169,77,.55);color:#E8A94D;white-space:nowrap">открытый код</span>
+          </div>
+          <p style="font-size:15px;line-height:1.55;color:rgba(245,246,247,.8);margin:0;text-wrap:pretty">Почтовый сервер для нескольких доменов на одном VPS: развёртывание и сорок проверок одной командой.</p>
+          <div style="display:grid;gap:8px;justify-items:start;margin-top:auto;font-size:14.5px;font-weight:600">
+            <a href="#" target="_blank" rel="noopener" style="color:#E8A94D" style-hover="color:#F3C67F">GitHub ↗</a>
+            <a href="#" onClick="{{ goPost }}" style="color:#E8A94D" style-hover="color:#F3C67F">Как это устроено →</a>
+          </div>
+        </div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:14px;padding:22px 24px;font-size:15.5px;line-height:1.5;color:rgba(245,246,247,.88);text-wrap:pretty">Сайт магазина швейцарских часов goldmean.ru</div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:14px;padding:22px 24px;font-size:15.5px;line-height:1.5;color:rgba(245,246,247,.88);text-wrap:pretty">Сайт производителя печатей и штампов</div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:14px;padding:22px 24px;font-size:15.5px;line-height:1.5;color:rgba(245,246,247,.88);text-wrap:pretty">Внешняя компонента для 1С: генерация RSA-ключей, JWK/JWKS, подпись RS256 без внешних утилит</div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:14px;padding:22px 24px;font-size:15.5px;line-height:1.5;color:rgba(245,246,247,.88);text-wrap:pretty">Автоматическая установка платформы 1С</div>
+        <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:14px;padding:22px 24px;font-size:15.5px;line-height:1.5;color:rgba(245,246,247,.88);text-wrap:pretty">Тихая установка MS SQL и PostgreSQL под 1С</div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isProduct }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Продукт: Универкон">
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(40px,5vw,72px) 24px clamp(30px,4vw,48px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:13px;color:rgba(245,246,247,.6);margin-bottom:clamp(24px,3vw,36px)">
+        <a href="#" onClick="{{ goWorks }}" style="color:rgba(245,246,247,.6)" style-hover="color:#E8A94D">Работы</a>
+        <span style="color:rgba(245,246,247,.35)">→</span>
+        <a href="#" onClick="{{ goWorks }}" style="color:rgba(245,246,247,.6)" style-hover="color:#E8A94D">Продукты</a>
+        <span style="color:rgba(245,246,247,.35)">→</span>
+        <span>Универкон</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+        <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(32px,5vw,54px);line-height:1.1;margin:0">Универкон</h1>
+        <span style="font-size:12px;letter-spacing:.04em;padding:5px 12px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.62);white-space:nowrap">в разработке</span>
+      </div>
+      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:rgba(245,246,247,.82);margin:18px 0 0;text-wrap:pretty">Управление вузом, колледжем и центром ДПО.</p>
+      <sc-if value="{{ showProductLinks }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:26px;font-size:15px;font-weight:600">
+        <a href="#" target="_blank" rel="noopener" style="color:#E8A94D" style-hover="color:#F3C67F">GitHub ↗</a>
+        <span style="color:rgba(245,246,247,.3)">·</span>
+        <a href="#" onClick="{{ goContact }}" style="color:#E8A94D" style-hover="color:#F3C67F">Написать нам →</a>
+      </div>
+      </sc-if>
+    </section>
+
+    <nav style="position:sticky;top:56px;z-index:40;background:rgba(26,36,48,.92);backdrop-filter:blur(14px);border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.09)">
+      <div style="max-width:760px;margin:0 auto;padding:0 24px;display:flex;gap:20px;overflow-x:auto;font-size:13.5px;font-weight:600;white-space:nowrap">
+        <a href="#p-task" style="padding:13px 0;color:{{ cTask }};border-bottom:2px solid {{ bTask }}" style-hover="color:#F5F6F7">Задача</a>
+        <a href="#p-can" style="padding:13px 0;color:{{ cCan }};border-bottom:2px solid {{ bCan }}" style-hover="color:#F5F6F7">Что умеет</a>
+        <a href="#p-decisions" style="padding:13px 0;color:{{ cDec }};border-bottom:2px solid {{ bDec }}" style-hover="color:#F5F6F7">Решения</a>
+        <sc-if value="{{ showNotDoing }}" hint-placeholder-val="{{ true }}">
+        <a href="#p-not" style="padding:13px 0;color:{{ cNot }};border-bottom:2px solid {{ bNot }}" style-hover="color:#F5F6F7">Чего не делаем</a>
+        </sc-if>
+        <sc-if value="{{ showState }}" hint-placeholder-val="{{ true }}">
+        <a href="#p-state" style="padding:13px 0;color:{{ cState }};border-bottom:2px solid {{ bState }}" style-hover="color:#F5F6F7">Состояние</a>
+        </sc-if>
+        <a href="#p-tech" style="padding:13px 0;color:{{ cTechSec }};border-bottom:2px solid {{ bTechSec }}" style-hover="color:#F5F6F7">Технологии</a>
+      </div>
+    </nav>
+
+    <section id="p-task" data-sec style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px;scroll-margin-top:104px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 22px">Какую задачу решает</h2>
+      <div style="display:grid;gap:18px;max-width:64ch">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Учебное заведение обязано вести контингент, планы, приказы и оценки, а потом отдавать эти данные в государственные системы и показывать на сайте. Обычно каждый кусок живёт в своей программе или в своём файле.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Данные начинают расходиться незаметно: в приказе одно, в ведомости другое, на сайте третье. Обнаруживается это на проверке.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Универкон собирает всё в один учёт, из которого берутся и отчёты, и выгрузки, и личные кабинеты.</p>
+      </div>
+    </section>
+
+    <section id="p-can" data-sec style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px;border-top:1px solid rgba(245,246,247,.14);scroll-margin-top:104px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 20px">Что умеет</h2>
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px clamp(12px,3vw,32px);padding:18px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <div style="font-size:16px;font-weight:700;line-height:1.4">Контингент</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.76);margin:0;text-wrap:pretty">Личные дела, студенческие билеты, зачётные книжки, движение: перевод, отпуск, восстановление.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px clamp(12px,3vw,32px);padding:18px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <div style="font-size:16px;font-weight:700;line-height:1.4">Учебные планы</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.76);margin:0;text-wrap:pretty">Планы и программы в машиночитаемом виде, а не в файлах Word.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px clamp(12px,3vw,32px);padding:18px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <div style="font-size:16px;font-weight:700;line-height:1.4">Приказы</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.76);margin:0;text-wrap:pretty">Формируются из данных учёта, а не набираются руками заново.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px clamp(12px,3vw,32px);padding:18px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <div style="font-size:16px;font-weight:700;line-height:1.4">Личные кабинеты</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.76);margin:0;text-wrap:pretty">Студент и преподаватель видят своё, с телефона.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px clamp(12px,3vw,32px);padding:18px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <div style="font-size:16px;font-weight:700;line-height:1.4">Выгрузки</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.76);margin:0;text-wrap:pretty">Государственные системы получают данные из одного источника.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="p-decisions" data-sec style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px;border-top:1px solid rgba(245,246,247,.14);scroll-margin-top:104px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 20px">Ключевые решения</h2>
+      <div style="display:grid;gap:26px;max-width:64ch">
+        <div>
+          <div style="font-size:16.5px;font-weight:700;line-height:1.45;margin-bottom:8px;text-wrap:pretty">Учёт живёт в 1С</div>
+          <p style="font-size:15px;line-height:1.62;color:rgba(245,246,247,.62);margin:0;text-wrap:pretty">Почему: 1С уже стоит в большинстве организаций, кадры и бухгалтерия рядом. Не заводим ещё один остров данных.</p>
+        </div>
+        <div>
+          <div style="font-size:16.5px;font-weight:700;line-height:1.45;margin-bottom:8px;text-wrap:pretty">Модули общаются по описанным контрактам</div>
+          <p style="font-size:15px;line-height:1.62;color:rgba(245,246,247,.62);margin:0;text-wrap:pretty">Почему: контракт проверяется машиной, поэтому обновление одного модуля не ломает соседний незаметно.</p>
+        </div>
+        <div>
+          <div style="font-size:16.5px;font-weight:700;line-height:1.45;margin-bottom:8px;text-wrap:pretty">Кабинеты работают офлайн</div>
+          <p style="font-size:15px;line-height:1.62;color:rgba(245,246,247,.62);margin:0;text-wrap:pretty">Почему: в аудиториях и общежитиях связь плохая. Данные хранятся на устройстве и досинхронизируются потом.</p>
+        </div>
+        <div>
+          <div style="font-size:16.5px;font-weight:700;line-height:1.45;margin-bottom:8px;text-wrap:pretty">Ставится на серверы заказчика</div>
+          <p style="font-size:15px;line-height:1.62;color:rgba(245,246,247,.62);margin:0;text-wrap:pretty">Почему: данные организации остаются у организации.</p>
+        </div>
+      </div>
+    </section>
+
+    <sc-if value="{{ showNotDoing }}" hint-placeholder-val="{{ true }}">
+    <section id="p-not" data-sec style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px;border-top:1px solid rgba(245,246,247,.14);scroll-margin-top:104px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 20px">Чего не делаем</h2>
+      <div style="display:grid;gap:12px;max-width:62ch;font-size:15.5px;line-height:1.62;color:rgba(245,246,247,.66)">
+        <p style="margin:0;text-wrap:pretty">Не заменяем бухгалтерию и кадры — работаем рядом с ними.</p>
+        <p style="margin:0;text-wrap:pretty">Не делаем облачную версию с хранением данных у нас.</p>
+        <p style="margin:0;text-wrap:pretty">Не подменяем систему дистанционного обучения — интегрируемся.</p>
+      </div>
+    </section>
+    </sc-if>
+
+    <sc-if value="{{ showState }}" hint-placeholder-val="{{ true }}">
+    <section id="p-state" data-sec style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px;border-top:1px solid rgba(245,246,247,.14);scroll-margin-top:104px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 18px">Состояние</h2>
+      <p style="font-size:16.5px;line-height:1.62;color:rgba(245,246,247,.82);margin:0 0 clamp(26px,3vw,36px);max-width:60ch;text-wrap:pretty">Ядро учёта и кабинеты — в работе. Выгрузки в государственные системы — проектируются.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2px 14px">
+        <div style="padding-top:12px;border-top:2px solid rgba(245,246,247,.3)">
+          <div style="font-size:15px;font-weight:600;color:rgba(245,246,247,.66)">Модель</div>
+          <div style="font-size:12.5px;color:rgba(245,246,247,.62);margin-top:4px">готово</div>
+        </div>
+        <div style="padding-top:12px;border-top:2px solid #E8A94D">
+          <div style="font-size:15px;font-weight:600;color:#E8A94D">Ядро учёта</div>
+          <div style="font-size:12.5px;color:#E8A94D;margin-top:4px">сейчас</div>
+        </div>
+        <div style="padding-top:12px;border-top:2px solid #E8A94D">
+          <div style="font-size:15px;font-weight:600;color:#E8A94D">Кабинеты</div>
+          <div style="font-size:12.5px;color:#E8A94D;margin-top:4px">сейчас</div>
+        </div>
+        <div style="padding-top:12px;border-top:2px solid rgba(245,246,247,.18)">
+          <div style="font-size:15px;font-weight:600;color:rgba(245,246,247,.62)">Выгрузки</div>
+          <div style="font-size:12.5px;color:rgba(245,246,247,.62);margin-top:4px">проектируются</div>
+        </div>
+      </div>
+    </section>
+    </sc-if>
+
+    <section id="p-tech" data-sec style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px;border-top:1px solid rgba(245,246,247,.14);scroll-margin-top:104px">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 18px">Технологии</h2>
+      <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;line-height:1.6;color:#E8A94D;margin:0 0 18px">1С:Предприятие · БСП · Go · TypeScript · React · PWA · Docker</p>
+      <a href="#" onClick="{{ goTech }}" style="font-size:15px;font-weight:600;color:#E8A94D" style-hover="color:#F3C67F">Как мы выбираем инструменты →</a>
+    </section>
+
+    <sc-if value="{{ showProductCta }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px;border-top:1px solid rgba(245,246,247,.14)">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.2;margin:0 0 14px;text-wrap:pretty">Хотите такое же у себя?</h2>
+      <p style="font-size:16.5px;line-height:1.62;color:rgba(245,246,247,.82);margin:0 0 18px;max-width:56ch;text-wrap:pretty">Мы берём немного проектов и сначала разбираемся в вашем устройстве.</p>
+      <a href="#" onClick="{{ goContact }}" style="font-size:16px;font-weight:600;color:#E8A94D" style-hover="color:#F3C67F">Написать →</a>
+    </section>
+    </sc-if>
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(34px,4vw,52px) 24px clamp(64px,9vw,112px);border-top:1px solid rgba(245,246,247,.14)">
+      <div style="font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,246,247,.62);margin-bottom:20px">Другие продукты</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px 24px">
+        <a href="#" onClick="{{ goWorks }}" style="display:grid;gap:8px;justify-items:start;color:#F5F6F7" style-hover="color:#E8A94D">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:16px">Архикон</span>
+          <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.62)">в разработке</span>
+        </a>
+        <a href="#" onClick="{{ goWorks }}" style="display:grid;gap:8px;justify-items:start;color:#F5F6F7" style-hover="color:#E8A94D">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:16px">Ярлыкон</span>
+          <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(232,169,77,.55);color:#E8A94D">работает</span>
+        </a>
+        <a href="#" onClick="{{ goWorks }}" style="display:grid;gap:8px;justify-items:start;color:#F5F6F7" style-hover="color:#E8A94D">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:16px">Метакон</span>
+          <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.62)">замысел</span>
+        </a>
+        <a href="#" onClick="{{ goWorks }}" style="display:grid;gap:8px;justify-items:start;color:#F5F6F7" style-hover="color:#E8A94D">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:16px">Тестикон</span>
+          <span style="font-size:11.5px;letter-spacing:.04em;padding:4px 10px;border-radius:99px;border:1px solid rgba(245,246,247,.28);color:rgba(245,246,247,.62)">замысел</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Команда">
+    <section style="max-width:1060px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(30px,4vw,48px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.14;margin:0 0 22px;max-width:22ch;text-wrap:pretty">Команда собирается под проект</h1>
+      <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.62;color:rgba(245,246,247,.82);max-width:60ch;margin:0;text-wrap:pretty">Постоянно — архитектор, дизайнер и системный администратор. Под задачу подключаем разработчиков: часть из них мы выучили сами, в своей Академии.</p>
+      <p style="font-size:clamp(14px,1.05vw,15.5px);line-height:1.6;color:rgba(245,246,247,.6);max-width:60ch;margin:22px 0 0;text-wrap:pretty">Мы не держим людей в простое и не берём проектов больше, чем способны понять. Если на задачу нужно пятьдесят человек — это не к нам.</p>
+    </section>
+
+    <section style="max-width:1060px;margin:0 auto;padding:0 24px clamp(20px,3vw,32px)">
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:26px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div>
+            <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Александр</div>
+            <div style="font-size:14px;line-height:1.5;color:#E8A94D;margin-top:7px">архитектор и вдохновитель</div>
+          </div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Отвечает за то, как всё устроено: от модели предметной области до контрактов между системами. Больше 25 лет в 1С, от 7.7 до 8.5.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:26px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Дизайнер</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Интерфейсы, фирменный стиль, печатные материалы.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:26px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Системный администратор</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Серверы, сети, доступы, работа систем в бою.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:26px 4px;border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.14)">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,19px);line-height:1.3">Разработчики</div>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Подключаются под проект. В том числе выпускники и стажёры Академии — под присмотром архитектора.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1060px;margin:0 auto;padding:clamp(40px,5vw,64px) 24px clamp(20px,3vw,32px)">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.2;margin:0 0 clamp(18px,2.5vw,28px)">Направления</h2>
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.3">Разработка</div>
+          <div style="display:grid;gap:10px;min-width:0">
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Свои продукты и работа под заказчика.</p>
+            <a href="#" onClick="{{ goWorks }}" style="font-size:15px;font-weight:600;color:#E8A94D;justify-self:start" style-hover="color:#F3C67F">Работы →</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.3">Обучение</div>
+          <div style="display:grid;gap:10px;min-width:0">
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Академия iMiron: готовим 1С-инженеров.</p>
+            <a href="https://academ.aplicon.ru" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#E8A94D;justify-self:start" style-hover="color:#F3C67F">academ.aplicon.ru ↗</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.3">Исследования</div>
+          <div style="display:grid;gap:10px;min-width:0">
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Открытые модели предметных областей.</p>
+            <a href="#" target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#E8A94D;justify-self:start" style-hover="color:#F3C67F">GitHub ↗</a>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(10px,3vw,40px);padding:24px 4px;border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.14)">
+          <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(16px,1.4vw,18px);line-height:1.3">Технологии</div>
+          <div style="display:grid;gap:10px;min-width:0">
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Чем работаем и почему так.</p>
+            <a href="#" onClick="{{ goTech }}" style="font-size:15px;font-weight:600;color:#E8A94D;justify-self:start" style-hover="color:#F3C67F">Технологии →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1060px;margin:0 auto;padding:clamp(40px,5vw,64px) 24px clamp(64px,9vw,112px)">
+      <p style="font-size:clamp(17px,1.7vw,22px);line-height:1.5;color:#F5F6F7;margin:0;max-width:46ch;text-wrap:pretty">Ищем тех, кто любит разбираться. Напишите → <a href="mailto:hello@aplicon.ru" style="color:#E8A94D;font-weight:600" style-hover="color:#F3C67F">hello@aplicon.ru</a></p>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Контакты">
+    <section style="max-width:1220px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(52px,7vw,92px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(32px,5vw,64px)">
+      <div style="min-width:0">
+        <div style="font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#E8A94D;margin-bottom:18px">Контакты</div>
+        <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:22ch;text-wrap:pretty">Расскажите, над чем работаете</h1>
+        <p style="font-size:clamp(16px,1.3vw,18px);line-height:1.62;color:rgba(245,246,247,.72);max-width:52ch;margin:0 0 34px;text-wrap:pretty">Отвечаем в течение рабочего дня. Если задача исследовательская и вы сами пока не знаете формулировку — тоже пишите, разберёмся вместе.</p>
+        <div style="display:grid;gap:18px;max-width:420px">
+          <div style="border-top:1px solid rgba(245,246,247,.12);padding-top:14px">
+            <div style="font-size:13px;color:rgba(245,246,247,.55);margin-bottom:5px">Почта</div>
+            <a href="mailto:hello@aplikon.ru" style="font-size:17px;font-weight:600">hello@aplikon.ru</a>
+          </div>
+          <div style="border-top:1px solid rgba(245,246,247,.12);padding-top:14px">
+            <div style="font-size:13px;color:rgba(245,246,247,.55);margin-bottom:5px">Обучение</div>
+            <a href="mailto:learn@aplikon.ru" style="font-size:17px;font-weight:600">learn@aplikon.ru</a>
+          </div>
+          <div style="border-top:1px solid rgba(245,246,247,.12);padding-top:14px">
+            <div style="font-size:13px;color:rgba(245,246,247,.55);margin-bottom:5px">Телефон</div>
+            <span style="font-size:17px;font-weight:600;color:#F5F6F7">+7 000 000-00-00</span>
+          </div>
+        </div>
+      </div>
+      <div style="min-width:0;background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:18px;padding:clamp(26px,3vw,36px);display:grid;gap:16px;align-content:start">
+        <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:19px">Написать нам</div>
+        <label style="display:grid;gap:7px;font-size:13.5px;color:rgba(245,246,247,.62)">Имя
+          <input type="text" placeholder="Как к вам обращаться" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border-radius:9px;border:1px solid rgba(245,246,247,.16);background:#1A2430;color:#F5F6F7;outline:none" style-focus="border-color:#E8A94D" />
+        </label>
+        <label style="display:grid;gap:7px;font-size:13.5px;color:rgba(245,246,247,.62)">Почта
+          <input type="email" placeholder="you@company.ru" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border-radius:9px;border:1px solid rgba(245,246,247,.16);background:#1A2430;color:#F5F6F7;outline:none" style-focus="border-color:#E8A94D" />
+        </label>
+        <label style="display:grid;gap:7px;font-size:13.5px;color:rgba(245,246,247,.62)">Задача
+          <textarea rows="4" placeholder="Пара предложений о том, что нужно сделать" style="font-family:'Manrope',sans-serif;font-size:15px;padding:13px 15px;border-radius:9px;border:1px solid rgba(245,246,247,.16);background:#1A2430;color:#F5F6F7;outline:none;resize:vertical" style-focus="border-color:#E8A94D"></textarea>
+        </label>
+        <button type="button" style="font-family:'Manrope',sans-serif;margin-top:4px;padding:15px 24px;border-radius:9px;border:none;background:#E8A94D;color:#1A2430;font-weight:700;font-size:16px;cursor:pointer" style-hover="background:#F3C67F">Отправить</button>
+        <div style="font-size:12.5px;color:rgba(245,246,247,.5);line-height:1.5">Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.</div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isBlog }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Блог">
+    <section style="max-width:820px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(26px,3vw,40px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 18px">Блог</h1>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:56ch;margin:0;text-wrap:pretty">Разборы задач, которые мы решали у себя или у заказчика.</p>
+    </section>
+    <section style="max-width:820px;margin:0 auto;padding:0 24px clamp(64px,9vw,112px)">
+      <div style="display:grid">
+        <a href="#" onClick="{{ goPost }}" style="display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:8px clamp(14px,3vw,32px);padding:26px 4px;border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.14);color:#F5F6F7" style-hover="color:#E8A94D">
+          <span style="font-size:14px;color:rgba(245,246,247,.62)">Сентябрь 2026</span>
+          <span style="display:grid;gap:8px;min-width:0">
+            <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(17px,1.6vw,20px);line-height:1.34;text-wrap:pretty">Своя почта для нескольких доменов на одном VPS</span>
+            <span style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.72);text-wrap:pretty">Как выбирали площадку, обо что споткнулись и что получилось.</span>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isPost }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Статья: mailstack">
+    <div style="position:fixed;top:0;left:0;height:2px;background:#E8A94D;width:{{ progress }};z-index:60"></div>
+
+    <div style="max-width:1140px;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:0 clamp(24px,4vw,64px);align-items:stretch">
+
+    <aside style="flex:1 1 180px;min-width:0;order:1">
+      <div style="position:sticky;top:96px;padding:clamp(30px,4vw,64px) 0 28px">
+        <div style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,246,247,.5);margin-bottom:16px">Содержание</div>
+        <nav style="display:grid;gap:11px;font-size:13.5px;line-height:1.4">
+          <a href="#a-result" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t1 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">10</span><span>Результат</span></a>
+          <a href="#a-parts" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t2 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">20</span><span>Состав</span></a>
+          <a href="#a-place" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t3 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">30</span><span>Площадка</span></a>
+          <a href="#a-relay" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t4 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">40</span><span>MX или релей</span></a>
+          <a href="#a-ask" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t5 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">50</span><span>Вопросы провайдеру</span></a>
+          <a href="#a-dns" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t6 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">60</span><span>DNS</span></a>
+          <a href="#a-tls" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t7 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">70</span><span>Сертификаты</span></a>
+          <a href="#a-clients" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t8 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">80</span><span>Клиенты</span></a>
+          <a href="#a-move" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t9 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">90</span><span>Переезд</span></a>
+          <a href="#a-sec" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t10 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">100</span><span>Безопасность</span></a>
+          <a href="#a-end" style="display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;color:{{ t11 }}" style-hover="color:#F3C67F"><span style="opacity:.9;font-family:'Silkscreen',ui-monospace,monospace;font-size:12px">110</span><span>Итоги</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <div style="flex:6 1 600px;min-width:0;order:2">
+
+    <section style="padding:clamp(30px,4vw,64px) 0 clamp(28px,3.5vw,40px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:13px;color:rgba(245,246,247,.6);margin-bottom:clamp(20px,3vw,30px)">
+        <a href="#" onClick="{{ goBlog }}" style="color:rgba(245,246,247,.6)" style-hover="color:#E8A94D">Блог</a>
+        <span style="color:rgba(245,246,247,.35)">→</span>
+        <span>mailstack</span>
+      </div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4.2vw,46px);line-height:1.16;letter-spacing:-.005em;margin:0;text-wrap:pretty">Своя почта для нескольких доменов на одном VPS</h1>
+      <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.56;color:rgba(245,246,247,.86);margin:22px 0 0;max-width:50ch;text-wrap:pretty">Как выбирали площадку, обо что споткнулись и что получилось</p>
+      <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.05em;line-height:1.5;color:rgba(245,246,247,.62);margin:26px 0 0">Сентябрь 2026 · разбор на ~20 минут</p>
+    </section>
+
+    <section id="a-result" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">10</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Коротко о результате</h2>
+      </div>
+      <div style="background:#242F3D;border:1px solid rgba(245,246,247,.09);border-radius:14px;padding:clamp(22px,3vw,30px)">
+        <div style="display:grid;gap:16px;font-size:17px;line-height:1.64;color:rgba(245,246,247,.86)">
+          <p style="margin:0;font-size:clamp(17.5px,1.7vw,20px);line-height:1.5;color:#F5F6F7;text-wrap:pretty">Один VPS обслуживает почту нескольких доменов: приём, отправка, IMAP, фильтрация спама, подпись писем. Развёртывание — одна команда, проверка состояния — вторая.</p>
+          <p style="margin:0;text-wrap:pretty">Письма уходят в Gmail и Яндекс во «Входящие», а не в спам. DMARC-отчёты приходят и читаются.</p>
+          <p style="margin:0;text-wrap:pretty">Считать это бесплатной заменой корпоративной почте не стоит: стоимость переезжает из подписки в час администратора. Смысл появляется, когда домены свои, ящиков десятки, а данные должны остаться на своём сервере.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="a-parts" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">20</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Из чего состоит</h2>
+      </div>
+      <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0 0 24px;max-width:64ch;text-wrap:pretty">Почтовый сервер — это не одна программа, а несколько служб, каждая со своей ролью. Разделение удобно тем, что любую часть можно заменить, не переписывая остальные.</p>
+      <div style="overflow-x:auto;border:1px solid rgba(245,246,247,.14);border-radius:12px">
+        <table style="width:100%;min-width:560px;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#242F3D;text-align:left">
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Компонент</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Роль</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Порты</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600;white-space:nowrap">Postfix</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Приём и отправка писем, маршрутизация между доменами</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:rgba(245,246,247,.8);white-space:nowrap">25, 465, 587</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600;white-space:nowrap">Dovecot</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Хранение ящиков, доступ по IMAP, сортировка правилами Sieve</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:rgba(245,246,247,.8);white-space:nowrap">993</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600;white-space:nowrap">Rspamd</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Фильтрация спама, подпись DKIM, проверка SPF и DMARC на входе</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:rgba(245,246,247,.8);white-space:nowrap">локально</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600;white-space:nowrap">PostgreSQL</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Список доменов, ящиков, псевдонимов и паролей</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:rgba(245,246,247,.8);white-space:nowrap">локально</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600;white-space:nowrap">Certbot</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Сертификаты на все почтовые имена и их продление</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;color:rgba(245,246,247,.8);white-space:nowrap">80</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="a-place" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">30</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Где это живёт: выбор площадки</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch;margin-bottom:26px">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Главное решается до установки: разрешит ли площадка исходящий порт 25 и даст ли собственную PTR-запись. Без первого письма не уйдут вовсе, без второго их не примут крупные почтовые службы.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Второй по важности вопрос — репутация адреса. IP из пула, с которого до вас рассылали спам, лечится только переездом, поэтому проверять адрес по чёрным спискам нужно сразу после выдачи, а не после первой жалобы.</p>
+      </div>
+      <p style="font-size:13.5px;line-height:1.55;color:rgba(245,246,247,.62);margin:0 0 14px;max-width:60ch">Данные из официальных FAQ, проверено в сентябре 2026. Уточняйте перед оплатой.</p>
+      <div style="overflow-x:auto;border:1px solid rgba(245,246,247,.14);border-radius:12px">
+        <table style="width:100%;min-width:620px;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#242F3D;text-align:left">
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Тип площадки</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Порт 25</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">PTR</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Чего ждать</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600">VPS-хостинг общего профиля</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Закрыт, открывают по заявке</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Есть в панели</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Просят описать назначение рассылки, дальше без ограничений</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600">Крупное облако</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Закрыт, часто наглухо</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Есть</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Отправку предлагают через собственный сервис рассылок</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600">Выделенный сервер</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Открыт</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Своя подсеть</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Больше свободы и больше администрирования</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600">Дешёвый VPS по акции</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Как повезёт</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Иногда нет</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Адрес из «грязного» пула, письма в спаме с первого дня</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="a-relay" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">40</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Свой MX или релей</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch;margin-bottom:26px">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Если порт 25 закрыт или адрес с плохой историей, отправку отдают релею: свой сервер принимает письмо от клиента и передаёт его наружу через сторонний узел с готовой репутацией. Приём при этом остаётся своим.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Мы выбрали свой MX и оставили релей как запасной путь: переключение — одна строка в конфигурации Postfix.</p>
+      </div>
+      <div data-code-block style="margin-bottom:26px;border:1px solid rgba(245,246,247,.1);border-radius:12px;background:#242F3D;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;border-bottom:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.07em;color:rgba(245,246,247,.62)">main.cf — отправка через релей</span>
+          <button onClick="{{ copyCode }}" style="font-size:12px;font-weight:600;padding:6px 12px;border-radius:7px;border:1px solid rgba(245,246,247,.2);background:transparent;color:rgba(245,246,247,.78);cursor:pointer;flex-shrink:0" style-hover="color:#E8A94D;border-color:rgba(232,169,77,.5)">Копировать</button>
+        </div>
+        <pre style="margin:0;padding:20px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.7;color:rgba(245,246,247,.88)">relayhost = [smtp.relay.example]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_tls_security_level = encrypt</pre>
+      </div>
+      <p style="font-size:13.5px;line-height:1.55;color:rgba(245,246,247,.62);margin:0 0 14px;max-width:60ch">Данные из официальных FAQ, проверено в сентябре 2026. Уточняйте перед оплатой.</p>
+      <div style="overflow-x:auto;border:1px solid rgba(245,246,247,.14);border-radius:12px">
+        <table style="width:100%;min-width:600px;border-collapse:collapse;font-size:15px">
+          <thead>
+            <tr style="background:#242F3D;text-align:left">
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Способ отправки</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Репутация</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Лимиты</th>
+              <th style="padding:14px 18px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(245,246,247,.7);font-weight:600;white-space:nowrap">Кому подходит</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600">Свой MX напрямую</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Своя, набирается месяцами</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Только чужие</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Чистый адрес, открытый порт 25, есть кому следить</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600">Релей провайдера</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Общая с соседями</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Есть, обычно суточные</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Порт 25 закрыт, писем немного</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);font-weight:600">Сервис рассылок</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Хорошая, с доставкой и отчётами</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Тариф за письма</td>
+              <td style="padding:14px 18px;border-top:1px solid rgba(245,246,247,.1);color:rgba(245,246,247,.8)">Уведомления из приложений, а не переписка людей</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="a-ask" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">50</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Что спросить у провайдера</h2>
+      </div>
+      <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0 0 24px;max-width:64ch;text-wrap:pretty">Шесть вопросов в поддержку до оплаты закрывают почти все сюрпризы. Ответы приходят за час, а переезд с неподходящей площадки занимает неделю.</p>
+      <div style="display:grid;gap:14px;max-width:62ch;font-size:16px;line-height:1.62;color:rgba(245,246,247,.86)">
+        <p style="margin:0;text-wrap:pretty">1. Открыт ли исходящий порт 25 и на каких условиях.</p>
+        <p style="margin:0;text-wrap:pretty">2. Можно ли задать PTR-запись самостоятельно.</p>
+        <p style="margin:0;text-wrap:pretty">3. Не числится ли выданный адрес в чёрных списках.</p>
+        <p style="margin:0;text-wrap:pretty">4. Есть ли IPv6 и обязательно ли его использовать.</p>
+        <p style="margin:0;text-wrap:pretty">5. Как делаются снимки диска и куда они складываются.</p>
+        <p style="margin:0;text-wrap:pretty">6. Что происходит при жалобе на спам: предупреждение или отключение.</p>
+      </div>
+      <a href="#" onClick="{{ goChecklist }}" style="display:inline-block;margin-top:24px;font-size:15px;font-weight:600;color:#E8A94D" style-hover="color:#F3C67F">Чек-лист выбора площадки →</a>
+    </section>
+
+    <section id="a-dns" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">60</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">DNS: SPF, DKIM, DMARC, MTA-STS</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch;margin-bottom:26px">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Три записи отвечают на три вопроса принимающей стороны: кому разрешено отправлять от имени домена, не менялось ли письмо в пути и что делать, если проверки не прошли. Четвёртая, MTA-STS, требует шифрования соединения.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Начинать стоит с <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:#242F3D;padding:2px 6px;border-radius:5px">p=none</code>: отчёты уже приходят, но письма ещё не отбрасываются. Через пару недель, когда в отчётах не осталось неожиданных отправителей, политика ужесточается.</p>
+      </div>
+      <div data-code-block style="border:1px solid rgba(245,246,247,.1);border-radius:12px;background:#242F3D;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;border-bottom:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.07em;color:rgba(245,246,247,.62)">зона example.ru</span>
+          <button onClick="{{ copyCode }}" style="font-size:12px;font-weight:600;padding:6px 12px;border-radius:7px;border:1px solid rgba(245,246,247,.2);background:transparent;color:rgba(245,246,247,.78);cursor:pointer;flex-shrink:0" style-hover="color:#E8A94D;border-color:rgba(232,169,77,.5)">Копировать</button>
+        </div>
+        <pre style="margin:0;padding:20px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.7;color:rgba(245,246,247,.88)">example.ru.            MX    10 mail.example.ru.
+example.ru.            TXT   "v=spf1 mx -all"
+dkim._domainkey        TXT   "v=DKIM1; k=rsa; p=MIIBIjANBg..."
+_dmarc                 TXT   "v=DMARC1; p=none; rua=mailto:dmarc@example.ru"
+_mta-sts               TXT   "v=STSv1; id=20260901"
+mail.example.ru.       A     203.0.113.10</pre>
+      </div>
+    </section>
+
+    <section id="a-tls" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">70</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Сертификаты</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Сертификат нужен на то имя, которое клиенты видят в настройках — обычно одно <code style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:#242F3D;padding:2px 6px;border-radius:5px">mail.домен</code> на все ящики домена. Продление автоматическое, но Postfix и Dovecot нужно перезапускать после него, иначе они продолжат отдавать старый сертификат до следующей перезагрузки.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Обо что споткнулись: забытый хук перезапуска обнаружился через три месяца, когда сертификат истёк и клиенты перестали подключаться. Теперь это проверяется одной из сорока проверок состояния.</p>
+      </div>
+    </section>
+
+    <section id="a-clients" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">80</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Клиенты и автонастройка</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Просить пользователя вписать имена серверов и номера портов — надёжный способ получить десять обращений в поддержку. Решается файлом автонастройки на веб-сервере домена: почтовые клиенты забирают параметры сами, человек вводит только адрес и пароль.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Приложения на телефонах подключаются по IMAP и SMTP без отдельной настройки. Веб-интерфейс мы не ставили: почта открывается в обычном клиенте, и это устроило всех.</p>
+      </div>
+    </section>
+
+    <section id="a-move" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">90</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Переезд без потери писем</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch;margin-bottom:26px">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Порядок такой: поднять новый сервер, перенести содержимое ящиков, проверить отправку и приём на тестовом домене и только потом переключить MX. Старый сервер остаётся принимать письма ещё несколько дней, пока DNS обновляется у всех.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Перенос повторяется без вреда: второй запуск догоняет письма, пришедшие за время первого.</p>
+      </div>
+      <div data-code-block style="border:1px solid rgba(245,246,247,.1);border-radius:12px;background:#242F3D;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;border-bottom:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.07em;color:rgba(245,246,247,.62)">перенос ящика</span>
+          <button onClick="{{ copyCode }}" style="font-size:12px;font-weight:600;padding:6px 12px;border-radius:7px;border:1px solid rgba(245,246,247,.2);background:transparent;color:rgba(245,246,247,.78);cursor:pointer;flex-shrink:0" style-hover="color:#E8A94D;border-color:rgba(232,169,77,.5)">Копировать</button>
+        </div>
+        <pre style="margin:0;padding:20px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.7;color:rgba(245,246,247,.88)">imapsync \
+  --host1 old.example.ru --user1 user@example.ru --password1 "***" \
+  --host2 mail.example.ru --user2 user@example.ru --password2 "***" \
+  --ssl1 --ssl2 --automap --delete2duplicates</pre>
+      </div>
+    </section>
+
+    <section id="a-sec" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">100</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Безопасность</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Почтовый сервер перебирают пароли с первого дня — это видно в журналах через несколько часов после запуска. Помогают три вещи: блокировка адресов после серии неудачных попыток, отказ от аутентификации без шифрования и длинные пароли ящиков, выдаваемые генератором, а не пользователем.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Отдельно проверяется, что сервер не стал открытым релеем: отправка разрешена только после аутентификации, и это есть в списке проверок. Взломанный ящик, рассылающий спам, лишает репутации весь домен за сутки.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Резервные копии снимаются с ящиков и базы, лежат вне сервера и раз в квартал восстанавливаются на чистую машину.</p>
+        <p style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(18px,2vw,23px);line-height:1.42;color:#F5F6F7;margin:10px 0 0;max-width:32ch;text-wrap:pretty">Копия, которую никогда не разворачивали, копией не считается.</p>
+      </div>
+    </section>
+
+    <section id="a-end" data-sec style="padding:clamp(38px,5vw,60px) 0;border-top:1px solid rgba(245,246,247,.12);scroll-margin-top:88px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <span style="font-family:'Silkscreen',ui-monospace,monospace;font-size:14px;color:#E8A94D">110</span>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(21px,2.4vw,28px);line-height:1.22;margin:0;text-wrap:pretty">Итоги</h2>
+      </div>
+      <div style="display:grid;gap:18px;max-width:64ch">
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Своя почта — это не сложно настроить, а нужно поддерживать: следить за сертификатами, репутацией, копиями и обновлениями. Установка занимает вечер, эксплуатация — постоянные полчаса в месяц и один разбор в квартал.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Брать это стоит, когда домены свои, требования к данным жёсткие, а администратор всё равно есть. Если ящиков пять и админа нет, аренда честно дешевле.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0;text-wrap:pretty">Развёртывание и проверки мы собрали в открытый репозиторий: одна команда поднимает стек, вторая прогоняет сорок проверок и показывает, что именно не в порядке.</p>
+      </div>
+    </section>
+
+    <section style="padding:clamp(34px,4vw,52px) 0 clamp(64px,9vw,112px);border-top:1px solid rgba(245,246,247,.12)">
+      <div style="display:flex;flex-wrap:wrap;gap:12px 24px;font-size:15.5px;font-weight:600">
+        <a href="#" target="_blank" rel="noopener" style="color:#E8A94D" style-hover="color:#F3C67F">Репозиторий на GitHub ↗</a>
+        <span style="color:rgba(245,246,247,.3)">·</span>
+        <a href="#" onClick="{{ goChecklist }}" style="color:#E8A94D" style-hover="color:#F3C67F">Чек-лист выбора площадки →</a>
+        <span style="color:rgba(245,246,247,.3)">·</span>
+        <a href="#" onClick="{{ goBlog }}" style="color:#E8A94D" style-hover="color:#F3C67F">Другие статьи →</a>
+      </div>
+    </section>
+
+    </div>
+    </div>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isChecklist }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Чек-лист хостинга">
+    <section style="max-width:760px;margin:0 auto;padding:clamp(40px,5vw,72px) 24px clamp(30px,4vw,44px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:13px;color:rgba(245,246,247,.6);margin-bottom:clamp(22px,3vw,34px)">
+        <a href="#" onClick="{{ goBlog }}" style="color:rgba(245,246,247,.6)" style-hover="color:#E8A94D">Блог</a>
+        <span style="color:rgba(245,246,247,.35)">→</span>
+        <span>Чек-лист</span>
+      </div>
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(27px,4vw,44px);line-height:1.16;margin:0;max-width:26ch;text-wrap:pretty">Выбор хостинга под свою почту: что спросить до оплаты</h1>
+    </section>
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(30px,4vw,44px) 24px;border-top:1px solid rgba(245,246,247,.14)">
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:#E8A94D;line-height:1.45">1</span>
+          <div>
+            <div style="font-size:17px;font-weight:700;line-height:1.45;margin-bottom:7px;text-wrap:pretty">Открыт ли исходящий порт 25 и на каких условиях?</div>
+            <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Зачем: без него письма не уйдут вовсе, и придётся платить за релей.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:#E8A94D;line-height:1.45">2</span>
+          <div>
+            <div style="font-size:17px;font-weight:700;line-height:1.45;margin-bottom:7px;text-wrap:pretty">Можно ли задать PTR-запись самостоятельно?</div>
+            <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Зачем: без обратной записи крупные почтовые службы отклоняют письма или кладут их в спам.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:#E8A94D;line-height:1.45">3</span>
+          <div>
+            <div style="font-size:17px;font-weight:700;line-height:1.45;margin-bottom:7px;text-wrap:pretty">Не числится ли выданный адрес в чёрных списках?</div>
+            <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Зачем: чужая репутация достаётся вам вместе с адресом и лечится только переездом.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:#E8A94D;line-height:1.45">4</span>
+          <div>
+            <div style="font-size:17px;font-weight:700;line-height:1.45;margin-bottom:7px;text-wrap:pretty">Есть ли IPv6 и обязательно ли его использовать?</div>
+            <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Зачем: отправка по IPv6 без своей PTR и SPF для него — частая причина отказов.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:#E8A94D;line-height:1.45">5</span>
+          <div>
+            <div style="font-size:17px;font-weight:700;line-height:1.45;margin-bottom:7px;text-wrap:pretty">Как делаются снимки диска и куда они складываются?</div>
+            <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Зачем: копия ящиков на том же диске, что и сами ящики, не спасает.</p>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 16px;padding:22px 0;border-top:1px solid rgba(245,246,247,.1);border-bottom:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:17px;color:#E8A94D;line-height:1.45">6</span>
+          <div>
+            <div style="font-size:17px;font-weight:700;line-height:1.45;margin-bottom:7px;text-wrap:pretty">Что происходит при жалобе на спам: предупреждение или отключение?</div>
+            <p style="font-size:15px;line-height:1.6;color:rgba(245,246,247,.66);margin:0;text-wrap:pretty">Зачем: один взломанный ящик не должен приводить к отключению сервера без предупреждения.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(30px,4vw,44px) 24px;border-top:1px solid rgba(245,246,247,.14)">
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.22;margin:0 0 18px">Как проверить за час</h2>
+      <p style="font-size:16.5px;line-height:1.68;color:rgba(245,246,247,.82);margin:0 0 24px;max-width:64ch;text-wrap:pretty">Ответы поддержки полезно сверить с реальностью сразу после выдачи сервера. Две команды показывают, уходит ли соединение на порт 25 и что отвечает обратная запись адреса.</p>
+      <div data-code-block style="border:1px solid rgba(245,246,247,.1);border-radius:12px;background:#242F3D;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;border-bottom:1px solid rgba(245,246,247,.1)">
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.07em;color:rgba(245,246,247,.62)">проверка площадки</span>
+          <button onClick="{{ copyCode }}" style="font-size:12px;font-weight:600;padding:6px 12px;border-radius:7px;border:1px solid rgba(245,246,247,.2);background:transparent;color:rgba(245,246,247,.78);cursor:pointer;flex-shrink:0" style-hover="color:#E8A94D;border-color:rgba(232,169,77,.5)">Копировать</button>
+        </div>
+        <pre style="margin:0;padding:20px;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13.5px;line-height:1.7;color:rgba(245,246,247,.88)"># уходит ли порт 25 наружу
+nc -vz gmail-smtp-in.l.google.com 25
+
+# что отвечает обратная запись адреса
+dig -x 203.0.113.10 +short</pre>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:0 auto;padding:clamp(30px,4vw,44px) 24px clamp(64px,9vw,112px);border-top:1px solid rgba(245,246,247,.14)">
+      <a href="#" onClick="{{ goPost }}" style="font-size:16px;font-weight:600;color:#E8A94D" style-hover="color:#F3C67F">Подробный разбор с таблицами провайдеров →</a>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isLegal }}" hint-placeholder-val="{{ true }}">
+  <main data-screen-label="Реквизиты">
+    <section style="max-width:1000px;margin:0 auto;padding:clamp(48px,6vw,88px) 24px clamp(32px,4vw,48px)">
+      <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.12;margin:0 0 20px;max-width:24ch;text-wrap:pretty">О компании и реквизиты</h1>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:64ch;margin:0;text-wrap:pretty">При заключении договоров с ООО «Бизнестехнологии» в преамбуле договора необходимо указывать:</p>
+      <p style="font-size:16px;line-height:1.62;color:#F5F6F7;max-width:64ch;margin:18px 0 0;text-wrap:pretty">Общество с ограниченной ответственностью «Бизнес технологии», в лице Генерального директора Мирошниченко Александра Васильевича, действующей на основании устава.</p>
+      <p style="font-size:clamp(15px,1.2vw,17px);line-height:1.6;color:rgba(245,246,247,.66);max-width:64ch;margin:18px 0 0;text-wrap:pretty">Также сообщаем свои почтовые и банковские реквизиты для включения в договор:</p>
+    </section>
+    <section style="max-width:1000px;margin:0 auto;padding:0 24px clamp(64px,9vw,112px)">
+      <div style="display:grid">
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">Наименование</span>
+          <span style="font-size:15.5px;color:#F5F6F7">ООО «Бизнестехнологии»</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">Юридический адрес</span>
+          <span style="font-size:15.5px;color:#F5F6F7">460040 г. Оренбург, пр. Гагарина 25а, к. 30</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">Почтовый адрес</span>
+          <span style="font-size:15.5px;color:#F5F6F7">460040 г. Оренбург, пр. Гагарина 25а, к. 30</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">Адрес нахождения</span>
+          <span style="font-size:15.5px;color:#F5F6F7">460048 г. Оренбург, ул. Потехина д. 27а, оф. 36</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">р/с</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">407 02 810 0 292 500 056 30</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">Банк</span>
+          <span style="font-size:15.5px;color:#F5F6F7">ФИЛИАЛ «НИЖЕГОРОДСКИЙ» АО «АЛЬФА-БАНК»</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">БИК</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">042 202 824</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">к/с</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">301 01 810 200 000 000 824</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">ИНН</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">56 10 244 039</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">КПП</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">56 10 01 001</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">ОКПО</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">66 65 89 13</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">ОКВЭД</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">72.10</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">ОГРН</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7">122 56 00 00 05 26</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);gap:clamp(10px,2vw,32px);padding:18px 4px;border-top:1px solid rgba(245,246,247,.14);border-bottom:1px solid rgba(245,246,247,.14)">
+          <span style="font-size:14px;color:rgba(245,246,247,.66)">ЭДО</span>
+          <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#F5F6F7;word-break:break-all">2AE66C29DC8-A8EE-4DD6-8B91-787E7EBB0FA1</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <footer style="border-top:1px solid rgba(245,246,247,.09);background:#1A2430">
+    <div style="max-width:1220px;margin:0 auto;padding:clamp(40px,5vw,60px) 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px">
+      <div>
+        <img src="logo-aplicon.svg" alt="Апликон" style="display:block;height:32px;width:auto;margin-bottom:16px" />
+        <p style="font-size:13.5px;line-height:1.55;color:rgba(245,246,247,.68);margin:0;max-width:34ch">Разработка · Исследование · Обучение · Инновации</p>
+      </div>
+      <div style="display:grid;gap:10px;align-content:start;font-size:14.5px">
+        <div style="font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,246,247,.62);margin-bottom:4px">Команда</div>
+        <a href="#" onClick="{{ goWorks }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Работы</a>
+        <a href="#" onClick="{{ goTeam }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Команда</a>
+        <a href="#" onClick="{{ goServices }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Услуги</a>
+        <a href="#" onClick="{{ goResearch }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Исследования</a>
+        <a href="#" onClick="{{ goLearning }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Обучение</a>
+        <a href="#" onClick="{{ goTech }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Технологии</a>
+      </div>
+      <div style="display:grid;gap:10px;align-content:start;font-size:14.5px">
+        <div style="font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,246,247,.62);margin-bottom:4px">Компания</div>
+        <a href="#" onClick="{{ goLegal }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">О компании и реквизиты</a>
+        <a href="#" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Политика конфиденциальности</a>
+        <a href="#" onClick="{{ goBlog }}" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Блог</a>
+        <a href="https://academ.aplicon.ru" target="_blank" rel="noopener" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">Академия iMiron ↗</a>
+        <a href="#" target="_blank" rel="noopener" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">GitHub ↗</a>
+      </div>
+      <div style="display:grid;gap:10px;align-content:start;font-size:14.5px">
+        <div style="font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,246,247,.62);margin-bottom:4px">Связь</div>
+        <a href="mailto:hello@aplicon.ru" style="color:rgba(245,246,247,.78)" style-hover="color:#E8A94D">hello@aplicon.ru</a>
+        <span style="color:rgba(245,246,247,.78)">+7 000 000-00-00</span>
+      </div>
+    </div>
+    <div style="max-width:1220px;margin:0 auto;padding:0 24px 34px;font-size:12.5px;color:rgba(245,246,247,.62)">© 2026 ООО «Апликон»</div>
+  </footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startPage&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;works&quot;,&quot;product&quot;,&quot;team&quot;,&quot;services&quot;,&quot;research&quot;,&quot;learning&quot;,&quot;tech&quot;,&quot;blog&quot;,&quot;post&quot;,&quot;checklist&quot;,&quot;contact&quot;,&quot;legal&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Страницы&quot;},&quot;showStats&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Главная&quot;},&quot;showProductLinks&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Страница продукта&quot;},&quot;showNotDoing&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Страница продукта&quot;},&quot;showState&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Страница продукта&quot;},&quot;showProductCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Страница продукта&quot;}}">
+class Component extends DCLogic {
+  state = { page: null };
+
+  current() { return this.state.page || this.props.startPage || "home"; }
+
+  go(p) {
+    return (e) => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState({ page: p });
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  }
+
+  componentDidMount() { this.watchSections(); }
+  componentDidUpdate() { this.watchSections(); }
+
+  watchSections() {
+    const pick = () => {
+      const nodes = Array.prototype.slice.call(document.querySelectorAll("[data-sec]"));
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const prog = max > 40 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
+      let active = nodes.length ? nodes[0].id : null;
+      const line = window.scrollY + 130;
+      nodes.forEach(n => { if (n.offsetTop <= line) active = n.id; });
+      if (active !== this.state.section || Math.abs(prog - (this.state.prog || 0)) > 0.4) {
+        this.setState({ section: active, prog: prog });
+      }
+    };
+    this.pick = pick;
+    if (!this.onScroll) {
+      this.onScroll = () => {
+        if (this.raf) return;
+        this.raf = requestAnimationFrame(() => {
+          this.raf = null;
+          try { this.pick(); } catch (e) {}
+        });
+      };
+      window.addEventListener("scroll", this.onScroll, { passive: true });
+      window.addEventListener("resize", this.onScroll, { passive: true });
+    }
+    pick();
+  }
+
+  componentWillUnmount() {
+    if (this.onScroll) {
+      window.removeEventListener("scroll", this.onScroll);
+      window.removeEventListener("resize", this.onScroll);
+    }
+  }
+
+  renderVals() {
+    const p = this.current();
+    const s = this.state.section || "p-task";
+    const sc = (k) => (k === s ? "#E8A94D" : "rgba(245,246,247,.66)");
+    const sb = (k) => (k === s ? "#E8A94D" : "transparent");
+    const ac = (k) => (k === this.state.section ? "#E8A94D" : "rgba(245,246,247,.62)");
+    const c = (k) => (k === p ? "#E8A94D" : "rgba(245,246,247,.68)");
+    return {
+      isHome: p === "home",
+      isServices: p === "services",
+      isResearch: p === "research",
+      isLearning: p === "learning",
+      isTech: p === "tech",
+      isWorks: p === "works",
+      isProduct: p === "product",
+      goWorks: this.go("works"),
+      goProduct: this.go("product"),
+      cWorks: p === "works" || p === "product" ? "#E8A94D" : "rgba(245,246,247,.68)",
+      cTask: sc("p-task"), bTask: sb("p-task"),
+      cCan: sc("p-can"), bCan: sb("p-can"),
+      cDec: sc("p-decisions"), bDec: sb("p-decisions"),
+      cNot: sc("p-not"), bNot: sb("p-not"),
+      cState: sc("p-state"), bState: sb("p-state"),
+      cTechSec: sc("p-tech"), bTechSec: sb("p-tech"),
+      showProductLinks: this.props.showProductLinks ?? true,
+      showNotDoing: this.props.showNotDoing ?? true,
+      showState: this.props.showState ?? true,
+      showProductCta: this.props.showProductCta ?? true,
+      isTeam: p === "team",
+      isContact: p === "contact",
+      isLegal: p === "legal",
+      isBlog: p === "blog",
+      isPost: p === "post",
+      isChecklist: p === "checklist",
+      goBlog: this.go("blog"),
+      goPost: this.go("post"),
+      goChecklist: this.go("checklist"),
+      progress: (this.state.prog || 0) + "%",
+      t1: ac("a-result"), t2: ac("a-parts"), t3: ac("a-place"), t4: ac("a-relay"),
+      t5: ac("a-ask"), t6: ac("a-dns"), t7: ac("a-tls"), t8: ac("a-clients"),
+      t9: ac("a-move"), t10: ac("a-sec"), t11: ac("a-end"),
+      copyCode: (e) => {
+        const btn = e.currentTarget;
+        const box = btn.closest("[data-code-block]");
+        const pre = box ? box.querySelector("pre") : null;
+        if (!pre) return;
+        const done = () => {
+          const old = btn.textContent;
+          btn.textContent = "Скопировано";
+          setTimeout(() => { btn.textContent = old; }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(pre.textContent).then(done, () => {});
+        }
+      },
+      goLegal: this.go("legal"),
+      goHome: this.go("home"),
+      goServices: this.go("services"),
+      goResearch: this.go("research"),
+      goLearning: this.go("learning"),
+      goTech: this.go("tech"),
+      goTeam: this.go("team"),
+      goContact: this.go("contact"),
+      cHome: c("home"),
+      cServices: c("services"),
+      cResearch: c("research"),
+      cLearning: c("learning"),
+      cTech: c("tech"),
+      cTeam: c("team"),
+      cContact: c("contact"),
+      showStats: this.props.showStats ?? true,
+      showVacancies: this.props.showVacancies ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

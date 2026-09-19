@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Шрифты грузит next/font (src/app/layout.tsx) — самохостинг, без похода на
+   fonts.googleapis.com на каждой загрузке. Next сам генерирует имена
+   семейств через CSS-переменные; здесь ими подменяются значения из
+   tokens.css. У всех трёх шрифтов (Unbounded/Manrope/Silkscreen) кириллица
+   в Google Fonts есть — замены шрифта, в отличие от goldmean.ru, не
+   понадобилось. */
+:root {
+  --font-display: var(--font-unbounded), sans-serif;
+  --font-text: var(--font-manrope), system-ui, sans-serif;
+  --font-pixel: var(--font-silkscreen), ui-monospace, monospace;
+}
+
+/* Токены Апликона -> утилиты Tailwind (bg-ap-bg, text-ap-accent, ...).
+   Источник значений — design-ref/tokens.css, его не правим руками. */
+@theme inline {
+  --color-ap-bg: var(--ap-bg);
+  --color-ap-surface: var(--ap-surface);
+  --color-ap-accent: var(--ap-accent);
+  --color-ap-accent-hover: var(--ap-accent-hover);
+  --color-ap-ink: var(--ap-ink);
+
+  --font-ap-display: var(--font-display);
+  --font-ap-text: var(--font-text);
+  --font-ap-pixel: var(--font-pixel);
+  --font-ap-mono: var(--ap-font-mono);
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--ap-bg);
+  }
+
+  body {
+    color: var(--ap-ink);
+    font-family: var(--font-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: var(--ap-accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--ap-accent-hover);
+  }
+
+  ::selection {
+    background: var(--ap-accent);
+    color: var(--ap-bg);
+  }
+
+  /* Двухколоночные "лейбл + текст" строки (tech/team/works/legal/product/blog)
+     на узких экранах распадаются на одну колонку — иначе вторая колонка
+     становится нечитаемо узкой и текст обрезается (найдено на реальном
+     iPhone при первой версии сайта на Astro). */
+  @media (max-width: 640px) {
+    .ap-2col {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}

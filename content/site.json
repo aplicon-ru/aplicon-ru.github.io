@@ -1,0 +1,32 @@
+{
+  "name": "Апликон",
+  "tagline": "Разработка · Исследование · Обучение · Инновации",
+  "domain": "aplicon.ru",
+  "email": "hello@aplicon.ru",
+  "learningEmail": "learn@aplicon.ru",
+  "phone": "+7 000 000-00-00",
+  "academyUrl": "https://academ.aplicon.ru",
+  "githubUrl": "https://github.com/aplicon-ru",
+  "nav": [
+    { "label": "Работы", "href": "/works" },
+    { "label": "Команда", "href": "/team" },
+    { "label": "Контакты", "href": "/contact" }
+  ],
+  "footer": {
+    "team": [
+      { "label": "Работы", "href": "/works" },
+      { "label": "Команда", "href": "/team" },
+      { "label": "Услуги", "href": "/services" },
+      { "label": "Исследования", "href": "/research" },
+      { "label": "Обучение", "href": "/learning" },
+      { "label": "Технологии", "href": "/tech" }
+    ],
+    "company": [
+      { "label": "О компании и реквизиты", "href": "/legal" },
+      { "label": "Политика конфиденциальности", "href": "/privacy" },
+      { "label": "Блог", "href": "/blog" },
+      { "label": "Академия iMiron ↗", "href": "https://academ.aplicon.ru", "external": true },
+      { "label": "GitHub ↗", "href": "https://github.com/aplicon-ru", "external": true }
+    ]
+  }
+}
