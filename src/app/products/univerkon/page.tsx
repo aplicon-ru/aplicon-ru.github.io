@@ -3,21 +3,17 @@ import Link from "next/link";
 import { canDo, decisions, otherProducts } from "../../../../content/product-univerkon.json";
 import StatusBadge from "@/components/StatusBadge";
 import ProductTocNav from "@/components/ProductTocNav";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Универкон" };
 
 export default function UniverkonPage() {
   return (
     <main>
-      <div className="mx-auto max-w-[760px] px-6 pt-[clamp(20px,3vw,30px)]">
-        <div className="flex flex-wrap items-baseline gap-2 text-[13px] text-white/60">
-          <Link href="/works" className="text-white/60 hover:!text-ap-accent">Работы</Link>
-          <span className="text-white/35">→</span>
-          <Link href="/works#works-products" className="text-white/60 hover:!text-ap-accent">Продукты</Link>
-          <span className="text-white/35">→</span>
-          <span>Универкон</span>
-        </div>
-      </div>
+      <Breadcrumbs
+        items={[{ label: "Работы", href: "/works" }, { label: "Продукты", href: "/works#works-products" }, { label: "Универкон" }]}
+        maxWidth="max-w-[760px]"
+      />
 
       <ProductTocNav />
 

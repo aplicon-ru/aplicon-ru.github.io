@@ -2,18 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import items from "../../../../content/hosting-checklist.json";
 import CodeBlock from "@/components/article/CodeBlock";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Выбор хостинга под свою почту" };
 
 export default function HostingChecklistPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[760px] px-6 pt-[clamp(40px,5vw,72px)] pb-[clamp(30px,4vw,44px)]">
-        <div className="mb-[clamp(22px,3vw,34px)] flex flex-wrap items-baseline gap-2 text-[13px] text-white/60">
-          <Link href="/blog" className="text-white/60 hover:!text-ap-accent">Блог</Link>
-          <span className="text-white/35">→</span>
-          <span>Чек-лист</span>
-        </div>
+      <Breadcrumbs items={[{ label: "Блог", href: "/blog" }, { label: "Чек-лист" }]} maxWidth="max-w-[760px]" />
+      <section className="mx-auto max-w-[760px] px-6 pt-[clamp(18px,2.5vw,28px)] pb-[clamp(30px,4vw,44px)]">
         <h1 className="m-0 max-w-[26ch] font-ap-display text-[clamp(27px,4vw,44px)] leading-[1.16] font-medium text-wrap-pretty">
           Выбор хостинга под свою почту: что спросить до оплаты
         </h1>

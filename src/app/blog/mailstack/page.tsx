@@ -4,6 +4,7 @@ import ReadingProgress from "@/components/article/ReadingProgress";
 import ArticleToc from "@/components/article/ArticleToc";
 import ArticleTocMobile from "@/components/article/ArticleTocMobile";
 import CodeBlock from "@/components/article/CodeBlock";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Своя почта для нескольких доменов на одном VPS" };
 
@@ -18,13 +19,7 @@ export default function MailstackPage() {
     <main>
       <ReadingProgress />
 
-      <div className="mx-auto max-w-[1140px] px-6 pt-[clamp(20px,3vw,30px)]">
-        <div className="flex flex-wrap items-baseline gap-2 text-[13px] text-white/60">
-          <Link href="/blog" className="text-white/60 hover:!text-ap-accent">Блог</Link>
-          <span className="text-white/35">→</span>
-          <span>mailstack</span>
-        </div>
-      </div>
+      <Breadcrumbs items={[{ label: "Блог", href: "/blog" }, { label: "mailstack" }]} maxWidth="max-w-[1140px]" />
 
       <ArticleTocMobile />
 
