@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { areas, pubs } from "../../../content/research.json";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Исследования и публикации" };
 
 export default function ResearchPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[1220px] px-6 pt-[clamp(48px,6vw,88px)] pb-[clamp(36px,4vw,56px)]">
+      <Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "Исследования" }]} />
+      <section className="mx-auto max-w-[1220px] px-6 pt-[clamp(28px,3.5vw,44px)] pb-[clamp(36px,4vw,56px)]">
         <div className="mb-4.5 text-[12.5px] font-semibold tracking-[.16em] text-ap-accent uppercase">Исследования и публикации</div>
         <h1 className="m-0 mb-5 max-w-[24ch] font-ap-display text-[clamp(30px,4.4vw,50px)] leading-[1.12] font-medium text-wrap-pretty">
           Исследуем то, что потом идёт в продукт

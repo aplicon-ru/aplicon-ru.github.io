@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import rows from "../../../content/tech.json";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Технологии" };
 
 export default function TechPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[1220px] px-6 pt-[clamp(48px,6vw,88px)] pb-[clamp(36px,4vw,56px)]">
+      <Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "Технологии" }]} />
+      <section className="mx-auto max-w-[1220px] px-6 pt-[clamp(28px,3.5vw,44px)] pb-[clamp(36px,4vw,56px)]">
         <h1 className="m-0 mb-5 max-w-[24ch] font-ap-display text-[clamp(30px,4.4vw,50px)] leading-[1.12] font-medium text-wrap-pretty">
           Технологии
         </h1>

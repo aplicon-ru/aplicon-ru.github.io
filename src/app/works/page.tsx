@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { products, projects, portfolio } from "../../../content/works.json";
 import StatusBadge from "@/components/StatusBadge";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Работы" };
 
 export default function WorksPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[1060px] px-6 pt-[clamp(48px,6vw,88px)] pb-[clamp(28px,3vw,44px)]">
+      <Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "Работы" }]} maxWidth="max-w-[1060px]" />
+      <section className="mx-auto max-w-[1060px] px-6 pt-[clamp(28px,3.5vw,44px)] pb-[clamp(28px,3vw,44px)]">
         <h1 className="m-0 mb-5 font-ap-display text-[clamp(30px,4.4vw,50px)] leading-[1.12] font-medium text-wrap-pretty">Работы</h1>
         <p className="m-0 max-w-[58ch] text-[clamp(15px,1.2vw,17px)] leading-[1.6] text-white/66 text-wrap-pretty">
           Свои продукты, проекты для заказчиков и отдельные работы.

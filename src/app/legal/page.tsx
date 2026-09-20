@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import rows from "../../../content/legal.json";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "О компании и реквизиты" };
 
@@ -8,7 +9,8 @@ const MONO_ROWS = new Set(["р/с", "БИК", "к/с", "ИНН", "КПП", "ОК
 export default function LegalPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[1000px] px-6 pt-[clamp(48px,6vw,88px)] pb-[clamp(32px,4vw,48px)]">
+      <Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "О компании и реквизиты" }]} maxWidth="max-w-[1000px]" />
+      <section className="mx-auto max-w-[1000px] px-6 pt-[clamp(28px,3.5vw,44px)] pb-[clamp(32px,4vw,48px)]">
         <h1 className="m-0 mb-5 max-w-[24ch] font-ap-display text-[clamp(30px,4.4vw,50px)] leading-[1.12] font-medium text-wrap-pretty">
           О компании и реквизиты
         </h1>

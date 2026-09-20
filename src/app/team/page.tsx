@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { people, directions } from "../../../content/team.json";
 import { site } from "@/lib/content/site";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Команда" };
 
 export default function TeamPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[1060px] px-6 pt-[clamp(48px,6vw,88px)] pb-[clamp(30px,4vw,48px)]">
+      <Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "Команда" }]} maxWidth="max-w-[1060px]" />
+      <section className="mx-auto max-w-[1060px] px-6 pt-[clamp(28px,3.5vw,44px)] pb-[clamp(30px,4vw,48px)]">
         <h1 className="m-0 mb-5.5 max-w-[22ch] font-ap-display text-[clamp(30px,4.4vw,50px)] leading-[1.14] font-medium text-wrap-pretty">
           Команда собирается под проект
         </h1>

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import posts from "../../../content/blog-posts.json";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = { title: "Блог" };
 
 export default function BlogPage() {
   return (
     <main>
-      <section className="mx-auto max-w-[820px] px-6 pt-[clamp(48px,6vw,88px)] pb-[clamp(26px,3vw,40px)]">
+      <Breadcrumbs items={[{ label: "Главная", href: "/" }, { label: "Блог" }]} maxWidth="max-w-[820px]" />
+      <section className="mx-auto max-w-[820px] px-6 pt-[clamp(28px,3.5vw,44px)] pb-[clamp(26px,3vw,40px)]">
         <h1 className="m-0 mb-4.5 font-ap-display text-[clamp(30px,4.4vw,50px)] leading-[1.12] font-medium">Блог</h1>
         <p className="m-0 max-w-[56ch] text-[clamp(15px,1.2vw,17px)] leading-[1.6] text-white/66 text-wrap-pretty">
           Разборы задач, которые мы решали у себя или у заказчика.
